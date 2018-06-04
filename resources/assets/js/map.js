@@ -239,7 +239,7 @@ function showDepartamentos(deno, tipo){
     
             new Chartkick.ColumnChart("chartDep", chartMultiData, {legend: "bottom"});
     
-            console.log(chartMultiData);
+            //console.log(chartMultiData);
 
             break;
 
@@ -263,7 +263,7 @@ function showDepartamentos(deno, tipo){
 
             new Chartkick.ColumnChart("chartDep", chartMultiData, {legend: "bottom"});
 
-            console.log(chartMultiData);
+            //console.log(chartMultiData);
 
             break;
 
@@ -288,7 +288,7 @@ function showDepartamentos(deno, tipo){
 
             new Chartkick.ColumnChart("chartDep", chartMultiData, {legend: "bottom"});
 
-            console.log(chartMultiData);
+            //console.log(chartMultiData);
 
             break;
 
@@ -307,18 +307,18 @@ function showDepartamentos(deno, tipo){
         event.forEach(function(feature){
           tableData.push([feature.f.ID_DEP, feature.f.NOMBDEP, feature.f.Nro_pdn, 'S/. ' + numberWithCommas(feature.f.Nro_pdnc), numberWithCommas(feature.f.Inversion_pdnc), numberWithCommas(feature.f.Nro_pdt)]);
           chartMultiData.push({name: feature.f.NOMBDEP, data: {"Familias": parseInt(feature.f.Inversion_pdnc), "Hectáreas": parseInt(feature.f.Nro_pdt)}});
-          //console.log(feature.f.Nro_pdn);
         });
-
+        
+        console.log(tableData);
         new Chartkick.ColumnChart("chartDep", chartMultiData, {legend: "bottom"});
 
-        console.log(chartMultiData);
+        //console.log(chartMultiData);
     }
     $(function() {
       loadState();
       
       $('#tblDep').DataTable( {
-        "order": [[ 2, "desc" ]],
+        "order": [[ 3, "desc" ]],
         "language": {
             "sProcessing":     "Procesando...",
             "sLengthMenu":     "Mostrar _MENU_ registros",
@@ -439,7 +439,7 @@ function showProvincias(id, deno, tipo){
             event.forEach(function(feature){
               tableData.push([feature.f.ID_PROV, feature.f.NOM_PROV, feature.f.Nro_pdn, 'S/. ' + numberWithCommas(feature.f.Nro_pdnc), numberWithCommas(feature.f.Inversion_pdnc), numberWithCommas(feature.f.Nro_pdt)]);
               chartMultiData.push({name: feature.f.NOM_PROV, data: {"Familias": parseInt(feature.f.Inversion_pdnc), "Hectáreas": parseInt(feature.f.Nro_pdt)}});
-              console.log(feature.f);
+              //(feature.f);
             });
 
             new Chartkick.ColumnChart("chartProv", chartMultiData, {legend: "bottom"});
@@ -461,7 +461,7 @@ function showProvincias(id, deno, tipo){
             event.forEach(function(feature){
               tableData.push([feature.f.ID_PROV, feature.f.NOM_PROV, feature.f.Nro_pdn, 'S/. ' + numberWithCommas(feature.f.Nro_pdnc), numberWithCommas(feature.f.Inversion_pdnc), numberWithCommas(feature.f.Nro_pdt)]);
               chartMultiData.push({name: feature.f.NOM_PROV, data: {"Familias": parseInt(feature.f.Inversion_pdnc), "Hectáreas": parseInt(feature.f.Nro_pdt)}});
-              console.log(feature.f);
+              //console.log(feature.f);
             });
 
             new Chartkick.ColumnChart("chartProv", chartMultiData, {legend: "bottom"});
@@ -484,7 +484,7 @@ function showProvincias(id, deno, tipo){
             event.forEach(function(feature){
               tableData.push([feature.f.ID_PROV, feature.f.NOM_PROV, feature.f.Nro_pdn, 'S/. ' + numberWithCommas(feature.f.Nro_pdnc), numberWithCommas(feature.f.Inversion_pdnc), numberWithCommas(feature.f.Nro_pdt)]);
               chartMultiData.push({name: feature.f.NOM_PROV, data: {"Familias": parseInt(feature.f.Inversion_pdnc), "Hectáreas": parseInt(feature.f.Nro_pdt)}});
-              console.log(feature.f);
+              //console.log(feature.f);
             });
 
             new Chartkick.ColumnChart("chartProv", chartMultiData, {legend: "bottom"});
@@ -507,7 +507,7 @@ function showProvincias(id, deno, tipo){
               event.forEach(function(feature){
                 tableData.push([feature.f.ID_PROV, feature.f.NOM_PROV, feature.f.Nro_pdn, 'S/. ' + numberWithCommas(feature.f.Nro_pdnc), numberWithCommas(feature.f.Inversion_pdnc), numberWithCommas(feature.f.Nro_pdt)]);
                 chartMultiData.push({name: feature.f.NOM_PROV, data: {"Familias": parseInt(feature.f.Inversion_pdnc), "Hectáreas": parseInt(feature.f.Nro_pdt)}});
-                console.log(feature.f);
+                //console.log(feature.f);
               });
 
               new Chartkick.ColumnChart("chartProv", chartMultiData, {legend: "bottom"});
@@ -517,7 +517,7 @@ function showProvincias(id, deno, tipo){
       loadState();
       
       $('#tblProv').DataTable( {
-        "order": [[ 2, "desc" ]],
+        "order": [[ 3, "desc" ]],
         "language": {
             "sProcessing":     "Procesando...",
             "sLengthMenu":     "Mostrar _MENU_ registros",
@@ -712,7 +712,7 @@ function showDistritos(id, deno, tipo){
       loadState();
       
       $('#tblDis').DataTable( {
-        "order": [[ 2, "desc" ]],
+        "order": [[ 3, "desc" ]],
         "language": {
             "sProcessing":     "Procesando...",
             "sLengthMenu":     "Mostrar _MENU_ registros",
@@ -839,7 +839,7 @@ function showCP(id, deno, tipo){
     let NRO_FAMILIAS = 0;
     
     event.forEach(function(feature){
-      console.log(feature.f);
+      //console.log(feature.f);
 
       NRO_FAMILIAS_M += parseInt(feature.f.NRO_FAMILIAS_M);
       NRO_FAMILIAS_F += parseInt(feature.f.NRO_FAMILIAS_F);
