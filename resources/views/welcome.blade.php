@@ -24,7 +24,7 @@
                   </div>
 
                   <div class="form-group">
-                    <label for="ddlTipo">TIPOLOGIA</label>
+                    <label for="ddlTipo">Tipología</label>
                     <select id="ddlTipo" class="form-control input-sm">
                       <option selected value="">Todos</option>
                       <option value="PDN">INFRAESTRUCTURA DE RIEGO</option>
@@ -32,13 +32,16 @@
                       <option value="PDT">RIEGO TECNIFICADO</option>
                     </select>
                   </div>
-                  <div class="form-group txtDenom input-group">
+                  <div class="form-group txtDenom input-group" style="display:none">
                     <label for="txtDenom">Denominación</label>
                     <input id="txtDenom" type="text" class="form-control input-sm" placeholder="">
                     <span class="input-group-btn input-group-btn-with-label">
                       <button id="btnBuscar" type="submit" class="btn btn-default btn-sm">Buscar</button>
-                      <button id="btnLimpiar" type="button" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> Limpiar</button>
                     </span>
+                  </div>
+                  <div class="form-group">
+                    <label>&nbsp;</label>
+                      <button id="btnLimpiar" type="button" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> Limpiar</button>
                   </div>
                 </form>
             </div>

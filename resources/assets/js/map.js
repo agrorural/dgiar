@@ -220,100 +220,99 @@ function showDepartamentos(deno, tipo){
 
     switch(tipo) {
         case 'PDN':
-            $(".chart__table").find("table thead").append(`
-              <tr>
-                <th rowspan="2">ID</th>
-                <th rowspan="2">Departamento</th>
-                <th colspan="2">PDN</th>
-              </tr>
-              <tr>
-                <th scope="col">Nº</th>
-                <th scope="col">Inversión</th>
-              </tr>
-            `);
+          $(".chart__table").find("table thead").append(`
+            <tr>
+              <th>ID</th>
+              <th>Departamento</th>
+              <th>Duración en meses</th>
+              <th>Expediente Técnico</th>
+              <th>Familias Beneficiarias</th>
+              <th>Hectáreas</th>
+            </tr>
+          `);
 
             event.forEach(function(feature){
-              tableData.push([feature.f.ID_DEP, feature.f.NOMBDEP, feature.f.Nro_pdn, 'S/. ' + numberWithCommas(feature.f.Inversion_pdn)]);
-              chartData.push([feature.f.NOMBDEP, parseInt(feature.f.Nro_pdn)]);
+              tableData.push([feature.f.ID_DEP, feature.f.NOMBDEP, feature.f.Nro_pdn, 'S/. ' + numberWithCommas(feature.f.Nro_pdnc), numberWithCommas(feature.f.Inversion_pdnc), numberWithCommas(feature.f.Nro_pdt)]);
+              chartMultiData.push({name: feature.f.NOMBDEP, data: {"Familias": parseInt(feature.f.Inversion_pdnc), "Hectáreas": parseInt(feature.f.Nro_pdt)}});
+              //console.log(feature.f.Nro_pdn);
             });
-
-            new Chartkick.PieChart("chartDep", chartData);
+    
+            new Chartkick.ColumnChart("chartDep", chartMultiData, {legend: "bottom"});
+    
+            console.log(chartMultiData);
 
             break;
 
         case 'PDNC':
-             $(".chart__table").find("table thead").append(`
-              <tr>
-                <th rowspan="2">ID</th>
-                <th rowspan="2">Departamento</th>
-                <th colspan="2">PDNC</th>
-              </tr>
-              <tr>
-                <th scope="col">Nº</th>
-                <th scope="col">Inversión</th>
-              </tr>
-            `);
+            $(".chart__table").find("table thead").append(`
+            <tr>
+              <th>ID</th>
+              <th>Departamento</th>
+              <th>Duración en meses</th>
+              <th>Expediente Técnico</th>
+              <th>Familias Beneficiarias</th>
+              <th>Hectáreas</th>
+            </tr>
+          `);
 
             event.forEach(function(feature){
-              tableData.push([feature.f.ID_DEP, feature.f.NOMBDEP, feature.f.Nro_pdnc, 'S/. ' + numberWithCommas(feature.f.Inversion_pdnc)]);
-              chartData.push([feature.f.NOMBDEP, parseInt(feature.f.Nro_pdnc)]);
+              tableData.push([feature.f.ID_DEP, feature.f.NOMBDEP, feature.f.Nro_pdn, 'S/. ' + numberWithCommas(feature.f.Nro_pdnc), numberWithCommas(feature.f.Inversion_pdnc), numberWithCommas(feature.f.Nro_pdt)]);
+              chartMultiData.push({name: feature.f.NOMBDEP, data: {"Familias": parseInt(feature.f.Inversion_pdnc), "Hectáreas": parseInt(feature.f.Nro_pdt)}});
+              //console.log(feature.f.Nro_pdn);
             });
 
-            new Chartkick.PieChart("chartDep", chartData);
+            new Chartkick.ColumnChart("chartDep", chartMultiData, {legend: "bottom"});
+
+            console.log(chartMultiData);
 
             break;
 
         case 'PDT':
 
             $(".chart__table").find("table thead").append(`
-              <tr>
-                <th rowspan="2">ID</th>
-                <th rowspan="2">Departamento</th>
-                <th colspan="2">PDT</th>
-              </tr>
-              <tr>
-                <th scope="col">Nº</th>
-                <th scope="col">Inversión</th>
-              </tr>
-            `);
+            <tr>
+              <th>ID</th>
+              <th>Departamento</th>
+              <th>Duración en meses</th>
+              <th>Expediente Técnico</th>
+              <th>Familias Beneficiarias</th>
+              <th>Hectáreas</th>
+            </tr>
+          `);
 
             event.forEach(function(feature){
-              tableData.push([feature.f.ID_DEP, feature.f.NOMBDEP, feature.f.Nro_pdt, 'S/. ' + numberWithCommas(feature.f.Inversion_pdt)]);
-              chartData.push([feature.f.NOMBDEP, parseInt(feature.f.Nro_pdt)]);
+              tableData.push([feature.f.ID_DEP, feature.f.NOMBDEP, feature.f.Nro_pdn, 'S/. ' + numberWithCommas(feature.f.Nro_pdnc), numberWithCommas(feature.f.Inversion_pdnc), numberWithCommas(feature.f.Nro_pdt)]);
+              chartMultiData.push({name: feature.f.NOMBDEP, data: {"Familias": parseInt(feature.f.Inversion_pdnc), "Hectáreas": parseInt(feature.f.Nro_pdt)}});
+              //console.log(feature.f.Nro_pdn);
             });
-            
-            new Chartkick.PieChart("chartDep", chartData);
+
+            new Chartkick.ColumnChart("chartDep", chartMultiData, {legend: "bottom"});
+
+            console.log(chartMultiData);
 
             break;
 
         default:
         $(".chart__table").find("table thead").append(`
           <tr>
-            <th rowspan="2">ID</th>
-            <th rowspan="2">Departamento</th>
-            <th colspan="2">PDN</th>
-            <th colspan="2">PDNC</th>
-            <th colspan="2">PDT</th>
-          </tr>
-          <tr>
-            <th scope="col">Nº</th>
-            <th scope="col">Inversión</th>
-            <th scope="col">Nº</th>
-            <th scope="col">Inversión</th>
-            <th scope="col">Nº</th>
-            <th scope="col">Inversión</th>
+            <th>ID</th>
+            <th>Departamento</th>
+            <th>Duración en meses</th>
+            <th>Expediente Técnico</th>
+            <th>Familias Beneficiarias</th>
+            <th>Hectáreas</th>
           </tr>
         `);
 
         event.forEach(function(feature){
-          tableData.push([feature.f.ID_DEP, feature.f.NOMBDEP, feature.f.Nro_pdn, 'S/. ' + numberWithCommas(feature.f.Inversion_pdn), feature.f.Nro_pdnc, 'S/. ' + numberWithCommas(feature.f.Inversion_pdnc), feature.f.Nro_pdt, 'S/. ' + numberWithCommas(feature.f.Inversion_pdt)]);
-          chartMultiData.push({name: feature.f.NOMBDEP, data: {"PDN": parseInt(feature.f.Nro_pdn), "PDNC": parseInt(feature.f.Nro_pdnc), "PDT": parseInt(feature.f.Nro_pdt)}});
-          //console.log(feature);
+          tableData.push([feature.f.ID_DEP, feature.f.NOMBDEP, feature.f.Nro_pdn, 'S/. ' + numberWithCommas(feature.f.Nro_pdnc), numberWithCommas(feature.f.Inversion_pdnc), numberWithCommas(feature.f.Nro_pdt)]);
+          chartMultiData.push({name: feature.f.NOMBDEP, data: {"Familias": parseInt(feature.f.Inversion_pdnc), "Hectáreas": parseInt(feature.f.Nro_pdt)}});
+          //console.log(feature.f.Nro_pdn);
         });
 
         new Chartkick.ColumnChart("chartDep", chartMultiData, {legend: "bottom"});
 
-        //console.log('no hay tipo');
+        console.log(chartMultiData);
     }
     $(function() {
       loadState();
@@ -426,99 +425,92 @@ function showProvincias(id, deno, tipo){
 
     switch(tipo) {
         case 'PDN':
-            $(".chart__table").find("table thead").append(`
+              $(".chart__table").find("table thead").append(`
               <tr>
-                <th rowspan="2">ID</th>
-                <th rowspan="2">Provincia</th>
-                <th colspan="2">PDN</th>
-              </tr>
-              <tr>
-                <th scope="col">Nº</th>
-                <th scope="col">Inversión</th>
+                <th>ID</th>
+                <th>Provincia</th>
+                <th>Duración en meses</th>
+                <th>Expediente Técnico</th>
+                <th>Familias Beneficiarias</th>
+                <th>Hectáreas</th>
               </tr>
             `);
-
+            
             event.forEach(function(feature){
-              tableData.push([feature.f.ID_PROV, feature.f.NOM_PROV, feature.f.Nro_pdn, 'S/. ' + numberWithCommas(feature.f.Inversion_pdn)]);
-              chartData.push([feature.f.NOM_PROV, parseInt(feature.f.Nro_pdn)]);
+              tableData.push([feature.f.ID_PROV, feature.f.NOM_PROV, feature.f.Nro_pdn, 'S/. ' + numberWithCommas(feature.f.Nro_pdnc), numberWithCommas(feature.f.Inversion_pdnc), numberWithCommas(feature.f.Nro_pdt)]);
+              chartMultiData.push({name: feature.f.NOM_PROV, data: {"Familias": parseInt(feature.f.Inversion_pdnc), "Hectáreas": parseInt(feature.f.Nro_pdt)}});
+              console.log(feature.f);
             });
 
-            new Chartkick.PieChart("chartProv", chartData);
+            new Chartkick.ColumnChart("chartProv", chartMultiData, {legend: "bottom"});
 
             break;
 
         case 'PDNC':
-             $(".chart__table").find("table thead").append(`
+              $(".chart__table").find("table thead").append(`
               <tr>
-                <th rowspan="2">ID</th>
-                <th rowspan="2">Provincia</th>
-                <th colspan="2">PDNC</th>
-              </tr>
-              <tr>
-                <th scope="col">Nº</th>
-                <th scope="col">Inversión</th>
+                <th>ID</th>
+                <th>Provincia</th>
+                <th>Duración en meses</th>
+                <th>Expediente Técnico</th>
+                <th>Familias Beneficiarias</th>
+                <th>Hectáreas</th>
               </tr>
             `);
-
+            
             event.forEach(function(feature){
-              tableData.push([feature.f.ID_PROV, feature.f.NOM_PROV, feature.f.Nro_pdnc, 'S/. ' + numberWithCommas(feature.f.Inversion_pdnc)]);
-              chartData.push([feature.f.NOM_PROV, parseInt(feature.f.Nro_pdnc)]);
+              tableData.push([feature.f.ID_PROV, feature.f.NOM_PROV, feature.f.Nro_pdn, 'S/. ' + numberWithCommas(feature.f.Nro_pdnc), numberWithCommas(feature.f.Inversion_pdnc), numberWithCommas(feature.f.Nro_pdt)]);
+              chartMultiData.push({name: feature.f.NOM_PROV, data: {"Familias": parseInt(feature.f.Inversion_pdnc), "Hectáreas": parseInt(feature.f.Nro_pdt)}});
+              console.log(feature.f);
             });
 
-            new Chartkick.PieChart("chartProv", chartData);
+            new Chartkick.ColumnChart("chartProv", chartMultiData, {legend: "bottom"});
 
             break;
 
         case 'PDT':
 
-            $(".chart__table").find("table thead").append(`
+              $(".chart__table").find("table thead").append(`
               <tr>
-                <th rowspan="2">ID</th>
-                <th rowspan="2">Provincia</th>
-                <th colspan="2">PDT</th>
-              </tr>
-              <tr>
-                <th scope="col">Nº</th>
-                <th scope="col">Inversión</th>
+                <th>ID</th>
+                <th>Provincia</th>
+                <th>Duración en meses</th>
+                <th>Expediente Técnico</th>
+                <th>Familias Beneficiarias</th>
+                <th>Hectáreas</th>
               </tr>
             `);
-
-            event.forEach(function(feature){
-              tableData.push([feature.f.ID_PROV, feature.f.NOM_PROV, feature.f.Nro_pdt, 'S/. ' + numberWithCommas(feature.f.Inversion_pdt)]);
-              chartData.push([feature.f.NOM_PROV, parseInt(feature.f.Nro_pdt)]);
-            });
             
-            new Chartkick.PieChart("chartProv", chartData);
+            event.forEach(function(feature){
+              tableData.push([feature.f.ID_PROV, feature.f.NOM_PROV, feature.f.Nro_pdn, 'S/. ' + numberWithCommas(feature.f.Nro_pdnc), numberWithCommas(feature.f.Inversion_pdnc), numberWithCommas(feature.f.Nro_pdt)]);
+              chartMultiData.push({name: feature.f.NOM_PROV, data: {"Familias": parseInt(feature.f.Inversion_pdnc), "Hectáreas": parseInt(feature.f.Nro_pdt)}});
+              console.log(feature.f);
+            });
+
+            new Chartkick.ColumnChart("chartProv", chartMultiData, {legend: "bottom"});
 
             break;
 
         default:
-        
+
               $(".chart__table").find("table thead").append(`
                 <tr>
-                  <th rowspan="2">ID</th>
-                  <th rowspan="2">Provincia</th>
-                  <th colspan="2">PDN</th>
-                  <th colspan="2">PDNC</th>
-                  <th colspan="2">PDT</th>
-                </tr>
-                <tr>
-                  <th scope="col">Nº</th>
-                  <th scope="col">Inversión</th>
-                  <th scope="col">Nº</th>
-                  <th scope="col">Inversión</th>
-                  <th scope="col">Nº</th>
-                  <th scope="col">Inversión</th>
+                  <th>ID</th>
+                  <th>Provincia</th>
+                  <th>Duración en meses</th>
+                  <th>Expediente Técnico</th>
+                  <th>Familias Beneficiarias</th>
+                  <th>Hectáreas</th>
                 </tr>
               `);
               
               event.forEach(function(feature){
-                tableData.push([feature.f.ID_PROV, feature.f.NOM_PROV, feature.f.Nro_pdn, 'S/. ' + numberWithCommas(feature.f.Inversion_pdn), feature.f.Nro_pdnc, 'S/. ' + numberWithCommas(feature.f.Inversion_pdnc), feature.f.Nro_pdt, 'S/. ' + numberWithCommas(feature.f.Inversion_pdt)]);
-                chartMultiData.push({name: feature.f.NOM_PROV, data: {"PDN": parseInt(feature.f.Nro_pdn), "PDNC": parseInt(feature.f.Nro_pdnc), "PDT": parseInt(feature.f.Nro_pdt)}});
+                tableData.push([feature.f.ID_PROV, feature.f.NOM_PROV, feature.f.Nro_pdn, 'S/. ' + numberWithCommas(feature.f.Nro_pdnc), numberWithCommas(feature.f.Inversion_pdnc), numberWithCommas(feature.f.Nro_pdt)]);
+                chartMultiData.push({name: feature.f.NOM_PROV, data: {"Familias": parseInt(feature.f.Inversion_pdnc), "Hectáreas": parseInt(feature.f.Nro_pdt)}});
+                console.log(feature.f);
               });
 
-        new Chartkick.ColumnChart("chartProv", chartMultiData, {legend: "bottom"});
-
+              new Chartkick.ColumnChart("chartProv", chartMultiData, {legend: "bottom"});
     }
 
     $(function() {
@@ -639,92 +631,78 @@ function showDistritos(id, deno, tipo){
         case 'PDN':
             $(".chart__table").find("table thead").append(`
               <tr>
-                <th rowspan="2">ID</th>
-                <th rowspan="2">Distrito</th>
-                <th colspan="2">PDN</th>
-              </tr>
-              <tr>
-                <th scope="col">Nº</th>
-                <th scope="col">Inversión</th>
-              </tr>
+                <th>ID</th>
+                <th>Distrito</th>
+                <th>Duración en meses</th>
+                <th>Expediente Técnico</th>
+                <th>Familias Beneficiarias</th>
+                <th>Hectáreas</th>
             `);
 
             event.forEach(function(feature){
-              tableData.push([feature.f.ID_DIS, feature.f.NOM_DIS, feature.f.Nro_pdn, 'S/. ' + numberWithCommas(feature.f.Inversion_pdn)]);
-              chartData.push([feature.f.NOM_DIS, parseInt(feature.f.Nro_pdn)]);
+              tableData.push([feature.f.ID_DIS, feature.f.NOM_DIS, feature.f.Nro_pdn, 'S/. ' + numberWithCommas(feature.f.Nro_pdnc), numberWithCommas(feature.f.Inversion_pdnc), numberWithCommas(feature.f.Nro_pdt)]);
+              chartMultiData.push({name: feature.f.NOM_PROV, data: {"Familias": parseInt(feature.f.Inversion_pdnc), "Hectáreas": parseInt(feature.f.Nro_pdt)}});
             });
 
-            new Chartkick.PieChart("chartDis", chartData);
+            new Chartkick.ColumnChart("chartDis", chartMultiData, {legend: "bottom"});
 
             break;
 
         case 'PDNC':
-             $(".chart__table").find("table thead").append(`
+              $(".chart__table").find("table thead").append(`
               <tr>
-                <th rowspan="2">ID</th>
-                <th rowspan="2">Distrito</th>
-                <th colspan="2">PDNC</th>
-              </tr>
-              <tr>
-                <th scope="col">Nº</th>
-                <th scope="col">Inversión</th>
-              </tr>
+                <th>ID</th>
+                <th>Distrito</th>
+                <th>Duración en meses</th>
+                <th>Expediente Técnico</th>
+                <th>Familias Beneficiarias</th>
+                <th>Hectáreas</th>
             `);
 
             event.forEach(function(feature){
-              tableData.push([feature.f.ID_DIS, feature.f.NOM_DIS, feature.f.Nro_pdnc, 'S/. ' + numberWithCommas(feature.f.Inversion_pdnc)]);
-              chartData.push([feature.f.NOM_DIS, parseInt(feature.f.Nro_pdnc)]);
+              tableData.push([feature.f.ID_DIS, feature.f.NOM_DIS, feature.f.Nro_pdn, 'S/. ' + numberWithCommas(feature.f.Nro_pdnc), numberWithCommas(feature.f.Inversion_pdnc), numberWithCommas(feature.f.Nro_pdt)]);
+              chartMultiData.push({name: feature.f.NOM_PROV, data: {"Familias": parseInt(feature.f.Inversion_pdnc), "Hectáreas": parseInt(feature.f.Nro_pdt)}});
             });
 
-            new Chartkick.PieChart("chartDis", chartData);
+            new Chartkick.ColumnChart("chartDis", chartMultiData, {legend: "bottom"});
 
             break;
 
         case 'PDT':
 
-            $(".chart__table").find("table thead").append(`
+              $(".chart__table").find("table thead").append(`
               <tr>
-                <th rowspan="2">ID</th>
-                <th rowspan="2">Distrito</th>
-                <th colspan="2">PDT</th>
-              </tr>
-              <tr>
-                <th scope="col">Nº</th>
-                <th scope="col">Inversión</th>
-              </tr>
+                <th>ID</th>
+                <th>Distrito</th>
+                <th>Duración en meses</th>
+                <th>Expediente Técnico</th>
+                <th>Familias Beneficiarias</th>
+                <th>Hectáreas</th>
             `);
 
             event.forEach(function(feature){
-              tableData.push([feature.f.ID_DIS, feature.f.NOM_DIS, feature.f.Nro_pdt, 'S/. ' + numberWithCommas(feature.f.Inversion_pdt)]);
-              chartData.push([feature.f.NOM_DIS, parseInt(feature.f.Nro_pdt)]);
+              tableData.push([feature.f.ID_DIS, feature.f.NOM_DIS, feature.f.Nro_pdn, 'S/. ' + numberWithCommas(feature.f.Nro_pdnc), numberWithCommas(feature.f.Inversion_pdnc), numberWithCommas(feature.f.Nro_pdt)]);
+              chartMultiData.push({name: feature.f.NOM_PROV, data: {"Familias": parseInt(feature.f.Inversion_pdnc), "Hectáreas": parseInt(feature.f.Nro_pdt)}});
             });
-            
-            new Chartkick.PieChart("chartDis", chartData);
+
+            new Chartkick.ColumnChart("chartDis", chartMultiData, {legend: "bottom"});
 
             break;
 
         default:
             $(".chart__table").find("table thead").append(`
             <tr>
-              <th rowspan="2">ID</th>
-              <th rowspan="2">Distrito</th>
-              <th colspan="2">PDN</th>
-              <th colspan="2">PDNC</th>
-              <th colspan="2">PDT</th>
-            </tr>
-            <tr>
-              <th scope="col">Nº</th>
-              <th scope="col">Inversión</th>
-              <th scope="col">Nº</th>
-              <th scope="col">Inversión</th>
-              <th scope="col">Nº</th>
-              <th scope="col">Inversión</th>
-            </tr>
+              <th>ID</th>
+              <th>Distrito</th>
+              <th>Duración en meses</th>
+              <th>Expediente Técnico</th>
+              <th>Familias Beneficiarias</th>
+              <th>Hectáreas</th>
           `);
-          
+
           event.forEach(function(feature){
-            tableData.push([feature.f.ID_DIS, feature.f.NOM_DIS, feature.f.Nro_pdn, 'S/. ' + numberWithCommas(feature.f.Inversion_pdn), feature.f.Nro_pdnc, 'S/. ' + numberWithCommas(feature.f.Inversion_pdnc), feature.f.Nro_pdt, 'S/. ' + numberWithCommas(feature.f.Inversion_pdt)]);
-            chartMultiData.push({name: feature.f.NOM_DIS, data: {"PDN": parseInt(feature.f.Nro_pdn), "PDNC": parseInt(feature.f.Nro_pdnc), "PDT": parseInt(feature.f.Nro_pdt)}});
+            tableData.push([feature.f.ID_DIS, feature.f.NOM_DIS, feature.f.Nro_pdn, 'S/. ' + numberWithCommas(feature.f.Nro_pdnc), numberWithCommas(feature.f.Inversion_pdnc), numberWithCommas(feature.f.Nro_pdt)]);
+            chartMultiData.push({name: feature.f.NOM_PROV, data: {"Familias": parseInt(feature.f.Inversion_pdnc), "Hectáreas": parseInt(feature.f.Nro_pdt)}});
           });
 
           new Chartkick.ColumnChart("chartDis", chartMultiData, {legend: "bottom"});
@@ -861,7 +839,7 @@ function showCP(id, deno, tipo){
     let NRO_FAMILIAS = 0;
     
     event.forEach(function(feature){
-      console.log(feature);
+      console.log(feature.f);
 
       NRO_FAMILIAS_M += parseInt(feature.f.NRO_FAMILIAS_M);
       NRO_FAMILIAS_F += parseInt(feature.f.NRO_FAMILIAS_F);
