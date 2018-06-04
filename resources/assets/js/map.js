@@ -219,7 +219,7 @@ function showDepartamentos(deno, tipo){
     let chartData = [];
 
     switch(tipo) {
-        case 'PDN':
+        case 'IDR':
           $(".chart__table").find("table thead").append(`
             <tr>
               <th>ID</th>
@@ -243,7 +243,7 @@ function showDepartamentos(deno, tipo){
 
             break;
 
-        case 'PDNC':
+        case 'IRR':
             $(".chart__table").find("table thead").append(`
             <tr>
               <th>ID</th>
@@ -267,7 +267,7 @@ function showDepartamentos(deno, tipo){
 
             break;
 
-        case 'PDT':
+        case 'TEC':
 
             $(".chart__table").find("table thead").append(`
             <tr>
@@ -424,7 +424,7 @@ function showProvincias(id, deno, tipo){
     let chartMultiData = [];
 
     switch(tipo) {
-        case 'PDN':
+        case 'IDR':
               $(".chart__table").find("table thead").append(`
               <tr>
                 <th>ID</th>
@@ -446,7 +446,7 @@ function showProvincias(id, deno, tipo){
 
             break;
 
-        case 'PDNC':
+        case 'IRR':
               $(".chart__table").find("table thead").append(`
               <tr>
                 <th>ID</th>
@@ -468,7 +468,7 @@ function showProvincias(id, deno, tipo){
 
             break;
 
-        case 'PDT':
+        case 'TEC':
 
               $(".chart__table").find("table thead").append(`
               <tr>
@@ -628,7 +628,7 @@ function showDistritos(id, deno, tipo){
     let chartData = [];
 
     switch(tipo) {
-        case 'PDN':
+        case 'IDR':
             $(".chart__table").find("table thead").append(`
               <tr>
                 <th>ID</th>
@@ -648,7 +648,7 @@ function showDistritos(id, deno, tipo){
 
             break;
 
-        case 'PDNC':
+        case 'IRR':
               $(".chart__table").find("table thead").append(`
               <tr>
                 <th>ID</th>
@@ -668,7 +668,7 @@ function showDistritos(id, deno, tipo){
 
             break;
 
-        case 'PDT':
+        case 'TEC':
 
               $(".chart__table").find("table thead").append(`
               <tr>

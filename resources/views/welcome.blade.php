@@ -27,9 +27,9 @@
                     <label for="ddlTipo">Tipología</label>
                     <select id="ddlTipo" class="form-control input-sm">
                       <option selected value="">Todos</option>
-                      <option value="PDN">INFRAESTRUCTURA DE RIEGO</option>
-                      <option value="PDNC">IRRIGACION</option>
-                      <option value="PDT">RIEGO TECNIFICADO</option>
+                      <option value="IDR">INFRAESTRUCTURA DE RIEGO</option>
+                      <option value="IDD">IRRIGACION</option>
+                      <option value="TEC">RIEGO TECNIFICADO</option>
                     </select>
                   </div>
                   <div class="form-group txtDenom input-group" style="display:none">
