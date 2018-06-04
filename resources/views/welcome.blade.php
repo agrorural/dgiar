@@ -22,13 +22,14 @@
                     <select id="ddlDistrito" class="form-control input-sm">
                     </select>
                   </div>
+
                   <div class="form-group">
-                    <label for="ddlTipo">Plan</label>
+                    <label for="ddlTipo">TIPOLOGIA</label>
                     <select id="ddlTipo" class="form-control input-sm">
                       <option selected value="">Todos</option>
-                      <option value="PDN">PDN</option>
-                      <option value="PDNC">PDNC</option>
-                      <option value="PDT">PDT</option>
+                      <option value="PDN">INFRAESTRUCTURA DE RIEGO</option>
+                      <option value="PDNC">IRRIGACION</option>
+                      <option value="PDT">RIEGO TECNIFICADO</option>
                     </select>
                   </div>
                   <div class="form-group txtDenom input-group">

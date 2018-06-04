@@ -1,12 +1,11 @@
 let tipoMapa = 1;
 let map;
-let aliadosDepID = '03,05,09,10,12,19';
+let dgiarDepID = '01,02,03,04,05,06,08,09,10,11,12,13,14,15,18,20,21,22,23';
 let deno = '';
 let tipo = '';
 let depID = '';
 let proID = '';
 let disID = '';
-
 
 function initialState(){
   $('.spinner-wrapper').show();
@@ -195,7 +194,7 @@ function showDepartamentos(deno, tipo){
 
   removeAllFeatures();
  
-  capaDepartamentos.loadGeoJson('/departamentos?deps=' + aliadosDepID + '&provs=&deno=' + deno + '&tipo=' + tipo, null, function(event){
+  capaDepartamentos.loadGeoJson('/departamentos?deps=' + dgiarDepID + '&provs=&deno=' + deno + '&tipo=' + tipo, null, function(event){
     $(".chart__table").html(`
       <div class="chart__table-container">
       <div class="page-header"><h3>Departamentos</h3></div>
@@ -1048,7 +1047,7 @@ $(document).ready(function() {
         $("#ddlDepartamento").empty();
         $("#ddlDepartamento").append("<option value='00' disabled selected>Seleccione</option>");
         $.each(resultado, function (index, value) {
-          if( value.ID_DEP === '03' || value.ID_DEP === '05' || value.ID_DEP === '09' || value.ID_DEP === '10' || value.ID_DEP === '12' || value.ID_DEP === '19' ){
+          if( value.ID_DEP === '01' || value.ID_DEP === '02' || value.ID_DEP === '03' || value.ID_DEP === '04' || value.ID_DEP === '05' || value.ID_DEP === '06' || value.ID_DEP === '08' || value.ID_DEP === '09' || value.ID_DEP === '10' || value.ID_DEP === '11' || value.ID_DEP === '12' || value.ID_DEP === '13' || value.ID_DEP === '14' || value.ID_DEP === '15' || value.ID_DEP === '18' || value.ID_DEP === '20' || value.ID_DEP === '21' || value.ID_DEP === '22' || value.ID_DEP === '23' ){
             $("#ddlDepartamento").append("<option value=" + value.ID_DEP + ">" + value.NOM_DEP + "</option>");
           }
         });
