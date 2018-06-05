@@ -1087,6 +1087,8 @@ capaDistritos.addListener('click', function(event) {
 });
 
 $(document).ready(function() {
+    getRegion();
+    
     $.ajax({
       url: 'http://qa.agrorural.gob.pe/WebAPI_GeoAgro/api/geo/ListarDepartamentoscombo',
       data: "{}",
@@ -1179,3 +1181,30 @@ $(document).ready(function() {
       search();
     });
 });
+
+function getRegion() {
+  $.ajax({
+    url: 'http://qa.agrorural.gob.pe/WEBAPI_GEOVICE/api/geo/ReportePorRegion',
+    data: "{}",
+    headers: { 
+    'Accept': 'application/json',
+    'Content-Type': 'application/json' 
+    },
+    contentType: "application/json;",
+    type: "post",
+    success: function (resultado) {
+      console.log(resultado);
+
+        chartMultiData = [];
+        
+        //console.log(tableData);
+        //new Chartkick.ColumnChart("chartDep", chartMultiData, {legend: "bottom"});
+        // $.each(resultado, function (index, value) {
+        //   chartMultiData.push([]);
+        // });
+    },
+    error: function (xhr, status, error) {
+
+    }
+  });
+}
