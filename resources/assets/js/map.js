@@ -198,7 +198,6 @@ function showDepartamentos(deno, tipo){
   capaDepartamentos.loadGeoJson('/departamentos?deps=' + dgiarDepID + '&provs=&deno=' + deno + '&tipo=' + tipo, null, function(event){
     $(".chart__table").html(`
       <div class="chart__table-container">
-      <div class="page-header"><h3>Departamentos</h3></div>
       <table id="tblDep" cellspacing="0" width="100%">
         <thead class="thead-dark">
         </thead>
@@ -210,7 +209,6 @@ function showDepartamentos(deno, tipo){
 
     $(".chart__image").html(`
       <div class="chart__image-container">
-      <div class="page-header"><h3>Planes</h3></div>
       <div class="chartShow" id="chartDep" style="height:300px"></div>
       </div>
     `);
@@ -225,9 +223,9 @@ function showDepartamentos(deno, tipo){
             <tr>
               <th>ID</th>
               <th>Departamento</th>
-              <th>Duración en meses</th>
-              <th>Expediente Técnico</th>
-              <th>Familias Beneficiarias</th>
+              <th>Duración (m)</th>
+              <th>Exp. Téc.</th>
+              <th>Familias Benef.</th>
               <th>Hectáreas</th>
             </tr>
           `);
@@ -249,9 +247,9 @@ function showDepartamentos(deno, tipo){
             <tr>
               <th>ID</th>
               <th>Departamento</th>
-              <th>Duración en meses</th>
-              <th>Expediente Técnico</th>
-              <th>Familias Beneficiarias</th>
+              <th>Duración (m)</th>
+              <th>Exp. Téc.</th>
+              <th>Familias Benef.</th>
               <th>Hectáreas</th>
             </tr>
           `);
@@ -274,9 +272,9 @@ function showDepartamentos(deno, tipo){
             <tr>
               <th>ID</th>
               <th>Departamento</th>
-              <th>Duración en meses</th>
-              <th>Expediente Técnico</th>
-              <th>Familias Beneficiarias</th>
+              <th>Duración (m)</th>
+              <th>Exp. Téc.</th>
+              <th>Familias Benef.</th>
               <th>Hectáreas</th>
             </tr>
           `);
@@ -298,9 +296,9 @@ function showDepartamentos(deno, tipo){
           <tr>
             <th>ID</th>
             <th>Departamento</th>
-            <th>Duración en meses</th>
-            <th>Expediente Técnico</th>
-            <th>Familias Beneficiarias</th>
+            <th>Duración (m)</th>
+            <th>Exp. Téc.</th>
+            <th>Familias Benef.</th>
             <th>Hectáreas</th>
           </tr>
         `);
@@ -310,7 +308,7 @@ function showDepartamentos(deno, tipo){
           chartMultiData.push({name: feature.f.NOMBDEP, data: {"Familias": parseInt(feature.f.Inversion_pdnc), "Hectáreas": parseInt(feature.f.Nro_pdt)}});
         });
         
-        console.log(tableData);
+        //console.log(tableData);
         new Chartkick.ColumnChart("chartDep", chartMultiData, {legend: "bottom"});
 
         //console.log(chartMultiData);
@@ -320,6 +318,8 @@ function showDepartamentos(deno, tipo){
       
       $('#tblDep').DataTable( {
         "order": [[ 3, "desc" ]],
+        "paging": false,
+        "searching": false,
         "language": {
             "sProcessing":     "Procesando...",
             "sLengthMenu":     "Mostrar _MENU_ registros",
@@ -351,7 +351,8 @@ function showDepartamentos(deno, tipo){
           "columnDefs": [ {
             "targets": 0,
             "visible": false
-          } ]
+          },
+          { className: "dt-body-right text-right", "targets": [ 2, 3, 4, 5 ] }]
       } );
 
       let chartHeight= $('.chart').height()
@@ -403,7 +404,6 @@ function showProvincias(id, deno, tipo){
   capaProvincias.loadGeoJson('/provincias?deps=' + id + '&provs=&deno=' + deno + '&tipo=' + tipo, null, function(event){
     $(".chart__table").html(`
       <div class="chart__table-container">
-      <div class="page-header"><h3>Provincias</h3></div>
       <table id="tblProv" cellspacing="0" width="100%">
         <thead class="thead-dark">
         </thead>
@@ -415,7 +415,6 @@ function showProvincias(id, deno, tipo){
 
     $(".chart__image").html(`
       <div class="chart__image-container">
-      <div class="page-header"><h3>Planes</h3></div>
       <div class="chartShow" id="chartProv" style="height:300px"></div>
       </div>
     `);
@@ -430,9 +429,9 @@ function showProvincias(id, deno, tipo){
               <tr>
                 <th>ID</th>
                 <th>Provincia</th>
-                <th>Duración en meses</th>
-                <th>Expediente Técnico</th>
-                <th>Familias Beneficiarias</th>
+                <th>Duración (m)</th>
+                <th>Exp. Téc.</th>
+                <th>Familias Benef.</th>
                 <th>Hectáreas</th>
               </tr>
             `);
@@ -452,9 +451,9 @@ function showProvincias(id, deno, tipo){
               <tr>
                 <th>ID</th>
                 <th>Provincia</th>
-                <th>Duración en meses</th>
-                <th>Expediente Técnico</th>
-                <th>Familias Beneficiarias</th>
+                <th>Duración (m)</th>
+                <th>Exp. Téc.</th>
+                <th>Familias Benef.</th>
                 <th>Hectáreas</th>
               </tr>
             `);
@@ -475,9 +474,9 @@ function showProvincias(id, deno, tipo){
               <tr>
                 <th>ID</th>
                 <th>Provincia</th>
-                <th>Duración en meses</th>
-                <th>Expediente Técnico</th>
-                <th>Familias Beneficiarias</th>
+                <th>Duración (m)</th>
+                <th>Exp. Téc.</th>
+                <th>Familias Benef.</th>
                 <th>Hectáreas</th>
               </tr>
             `);
@@ -498,9 +497,9 @@ function showProvincias(id, deno, tipo){
                 <tr>
                   <th>ID</th>
                   <th>Provincia</th>
-                  <th>Duración en meses</th>
-                  <th>Expediente Técnico</th>
-                  <th>Familias Beneficiarias</th>
+                  <th>Duración (m)</th>
+                  <th>Exp. Téc.</th>
+                  <th>Familias Benef.</th>
                   <th>Hectáreas</th>
                 </tr>
               `);
@@ -519,6 +518,8 @@ function showProvincias(id, deno, tipo){
       
       $('#tblProv').DataTable( {
         "order": [[ 3, "desc" ]],
+        "paging": false,
+        "searching": false,
         "language": {
             "sProcessing":     "Procesando...",
             "sLengthMenu":     "Mostrar _MENU_ registros",
@@ -550,7 +551,8 @@ function showProvincias(id, deno, tipo){
           "columnDefs": [ {
             "targets": 0,
             "visible": false
-          } ]
+          },
+          { className: "dt-body-right text-right", "targets": [ 2, 3, 4, 5 ] }]
       } );
 
       let chartHeight= $('.chart').height()
@@ -607,7 +609,6 @@ function showDistritos(id, deno, tipo){
     //console.log(event);
     $(".chart__table").html(`
       <div class="chart__table-container">
-      <div class="page-header"><h3>Distritos</h3></div>
       <table id="tblDis" class="table table-striped table-bordered dt-responsive nowrap table-hover table-condensed" cellspacing="0" width="100%">
         <thead class="thead-dark">
         </thead>
@@ -619,7 +620,6 @@ function showDistritos(id, deno, tipo){
 
     $(".chart__image").html(`
       <div class="chart__image-container">
-      <div class="page-header"><h3>Planes</h3></div>
       <div class="chartShow" id="chartDis" style="height:300px"></div>
       </div>
     `);
@@ -634,9 +634,9 @@ function showDistritos(id, deno, tipo){
               <tr>
                 <th>ID</th>
                 <th>Distrito</th>
-                <th>Duración en meses</th>
-                <th>Expediente Técnico</th>
-                <th>Familias Beneficiarias</th>
+                <th>Duración (m)</th>
+                <th>Exp. Téc.</th>
+                <th>Familias Benef.</th>
                 <th>Hectáreas</th>
             `);
 
@@ -654,9 +654,9 @@ function showDistritos(id, deno, tipo){
               <tr>
                 <th>ID</th>
                 <th>Distrito</th>
-                <th>Duración en meses</th>
-                <th>Expediente Técnico</th>
-                <th>Familias Beneficiarias</th>
+                <th>Duración (m)</th>
+                <th>Exp. Téc.</th>
+                <th>Familias Benef.</th>
                 <th>Hectáreas</th>
             `);
 
@@ -675,9 +675,9 @@ function showDistritos(id, deno, tipo){
               <tr>
                 <th>ID</th>
                 <th>Distrito</th>
-                <th>Duración en meses</th>
-                <th>Expediente Técnico</th>
-                <th>Familias Beneficiarias</th>
+                <th>Duración (m)</th>
+                <th>Exp. Téc.</th>
+                <th>Familias Benef.</th>
                 <th>Hectáreas</th>
             `);
 
@@ -695,9 +695,9 @@ function showDistritos(id, deno, tipo){
             <tr>
               <th>ID</th>
               <th>Distrito</th>
-              <th>Duración en meses</th>
-              <th>Expediente Técnico</th>
-              <th>Familias Beneficiarias</th>
+              <th>Duración (m)</th>
+              <th>Exp. Téc.</th>
+              <th>Familias Benef.</th>
               <th>Hectáreas</th>
           `);
 
@@ -714,6 +714,8 @@ function showDistritos(id, deno, tipo){
       
       $('#tblDis').DataTable( {
         "order": [[ 3, "desc" ]],
+        "paging": false,
+        "searching": false,
         "language": {
             "sProcessing":     "Procesando...",
             "sLengthMenu":     "Mostrar _MENU_ registros",
@@ -745,7 +747,8 @@ function showDistritos(id, deno, tipo){
           "columnDefs": [ {
             "targets": 0,
             "visible": false
-          } ]
+          },
+          { className: "dt-body-right text-right", "targets": [ 2, 3, 4, 5 ] }]
       } );
 
       let chartHeight= $('.chart').height()
@@ -805,7 +808,6 @@ function showCP(id, deno, tipo){
     //console.log(event);
     $(".chart__table").html(`
       <div class="chart__table-container">
-      <div class="page-header"><h3>Centro Poblado</h3></div>
       <table id="tblCP" cellspacing="0" width="100%">
         <thead class="thead-dark">
         </thead>
@@ -817,7 +819,6 @@ function showCP(id, deno, tipo){
 
     $(".chart__image").html(`
       <div class="chart__image-container">
-      <div class="page-header"><h3>Familias</h3></div>
       <div class="chartShow" id="chartCP" style="height:300px"></div>
       </div>
     `);
@@ -826,33 +827,36 @@ function showCP(id, deno, tipo){
     let chartMultiData = [];
 
     $(".chart__table").find("table thead").append(`
-      <tr>
-        <th>ID</th>
-        <th>Rubro</th>
-        <th>Linea</th>
-        <th>Familias</th>
-        <th>Demonimación</th>
-        <th>Organización</th>
-      </tr>
+    <tr>
+    <th>ID</th>
+    <th>Lugar</th>
+    <th>Duración (m)</th>
+    <th>Exp. Téc.</th>
+    <th>Familias Benef.</th>
+    <th>Hectáreas</th>
+  </tr>
     `);
     let NRO_FAMILIAS_M = 0;
     let NRO_FAMILIAS_F = 0;
     let NRO_FAMILIAS = 0;
     
     event.forEach(function(feature){
-      //console.log(feature.f);
+      console.log(feature.f);
 
       NRO_FAMILIAS_M += parseInt(feature.f.NRO_FAMILIAS_M);
       NRO_FAMILIAS_F += parseInt(feature.f.NRO_FAMILIAS_F);
       NRO_FAMILIAS += parseInt(feature.f.NRO_FAMILIAS);
-      tableData.push([feature.f.CODCP, feature.f.RUBRO, feature.f.LINEA_ESPECIFICA, parseInt(feature.f.NRO_FAMILIAS), feature.f.DENOMINACION, feature.f.ORGANIZACION]);
-      
+
+      tableData.push([feature.f.CODCP, feature.f.NOMCP, feature.f.Nro_pdn, 'S/. ' + numberWithCommas(feature.f.Nro_pdnc), numberWithCommas(feature.f.Inversion_pdnc), numberWithCommas(feature.f.Nro_pdt)]);
+      chartMultiData.push({name: feature.f.NOM_PROV, data: {"Familias": parseInt(feature.f.Inversion_pdnc), "Hectáreas": parseInt(feature.f.Nro_pdt)}});
     });
 
     $(function() {
       loadState();
       
       $('#tblCP').DataTable( {
+        "paging": false,
+        "searching": false,
         "language": {
             "sProcessing":     "Procesando...",
             "sLengthMenu":     "Mostrar _MENU_ registros",
@@ -884,11 +888,13 @@ function showCP(id, deno, tipo){
         "columnDefs": [ {
           "targets": 0,
           "visible": false
-        } ]
+        },
+        { className: "dt-body-right text-right", "targets": [ 2, 3, 4, 5 ] }]
 
       } );
 
-      new Chartkick.PieChart("chartCP", [["Hombres", NRO_FAMILIAS_M], ["Mujeres", NRO_FAMILIAS_F]], {donut: true});
+      // new Chartkick.PieChart("chartCP", [["Hombres", NRO_FAMILIAS_M], ["Mujeres", NRO_FAMILIAS_F]], {donut: true});
+      new Chartkick.ColumnChart("chartCP", chartMultiData, {legend: "bottom"});
 
       let chartHeight= $('.chart').height()
       $('#map').height(chartHeight);
@@ -1007,10 +1013,6 @@ capaDistritos.addListener('click', function(event) {
   //console.log(event.feature);
 });
 
-capaCP.addListener('click', function(event){
-  console.log(event);
-});
-
 $(document).ready(function() {
     $.ajax({
       url: 'http://qa.agrorural.gob.pe/WebAPI_GeoAgro/api/geo/ListarDepartamentoscombo',
@@ -1102,7 +1104,5 @@ $(document).ready(function() {
       let ddlTipo = $(this).val();
 
       search();
-
-      //console.log($("#ddlDepartamento").val());
     });
 });

@@ -10,11 +10,15 @@ $panel-default-border: $laravel-border-color;
 $panel-inner-border: $laravel-border-color;
 
 // Brands
-$brand-primary: #36A502;
+$brand-primary: #009E41;
 $brand-info: #8eb4cb;
 $brand-success: #A2D52D;
 $brand-warning: #cbb956;
 $brand-danger: #bf5329;
+
+$green-minagri-light: $brand-primary;
+$green-minagri-dark: #125230;
+$gray-minagri: #686666;
 
 // Typography
 $icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
