@@ -198,7 +198,7 @@ function showDepartamentos(deno, tipo){
   capaDepartamentos.loadGeoJson('/departamentos?deps=' + dgiarDepID + '&provs=&deno=' + deno + '&tipo=' + tipo, null, function(event){
     $(".chart__table").html(`
       <div class="chart__table-container">
-      <table id="tblDep" cellspacing="0" width="100%">
+      <table id="tblDep" cellspacing="0" class="dt-responsive nowrap" width="100%">
         <thead class="thead-dark">
         </thead>
         <tbody>
@@ -352,7 +352,9 @@ function showDepartamentos(deno, tipo){
             "targets": 0,
             "visible": false
           },
-          { className: "dt-body-right text-right", "targets": [ 2, 3, 4, 5 ] }]
+          { className: "dt-body-right text-right", "targets": [ 2, 3, 4, 5 ] },
+          { "width": "10%", "targets": [2, 4, 5] }
+        ]
       } );
 
       let chartHeight= $('.chart').height()
@@ -404,7 +406,7 @@ function showProvincias(id, deno, tipo){
   capaProvincias.loadGeoJson('/provincias?deps=' + id + '&provs=&deno=' + deno + '&tipo=' + tipo, null, function(event){
     $(".chart__table").html(`
       <div class="chart__table-container">
-      <table id="tblProv" cellspacing="0" width="100%">
+      <table id="tblProv" class="dt-responsive nowrap" cellspacing="0" width="100%">
         <thead class="thead-dark">
         </thead>
         <tbody>
@@ -609,7 +611,7 @@ function showDistritos(id, deno, tipo){
     //console.log(event);
     $(".chart__table").html(`
       <div class="chart__table-container">
-      <table id="tblDis" class="table table-striped table-bordered dt-responsive nowrap table-hover table-condensed" cellspacing="0" width="100%">
+      <table id="tblDis"  class="dt-responsive nowrap" cellspacing="0" width="100%">
         <thead class="thead-dark">
         </thead>
         <tbody>
@@ -808,7 +810,7 @@ function showCP(id, deno, tipo){
     //console.log(event);
     $(".chart__table").html(`
       <div class="chart__table-container">
-      <table id="tblCP" cellspacing="0" width="100%">
+      <table id="tblCP" class="dt-responsive nowrap" cellspacing="0" width="100%">
         <thead class="thead-dark">
         </thead>
         <tbody>

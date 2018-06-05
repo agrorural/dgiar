@@ -38,7 +38,7 @@ class GeoController extends Controller
                 header("Access-Control-Allow-Headers: {$_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS']}");  
         }
 
-        $url = 'http://qa.agrorural.gob.pe/WEBAPI_GEOVICE/api/geo/ListarDepartamentos';
+        $url = 'http://intranet.agrorural.gob.pe/WEBAPI_GEOVICE/api/geo/ListarDepartamentos';
         $data = trim($_GET['deps']);
         $data = stripslashes($data);
         $data = htmlspecialchars($data);
@@ -125,7 +125,7 @@ class GeoController extends Controller
                 header("Access-Control-Allow-Headers: {$_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS']}");  
         }
 
-        $url = 'http://qa.agrorural.gob.pe/WEBAPI_GEOVICE/api/geo/ListarProvincias';
+        $url = 'http://intranet.agrorural.gob.pe/WEBAPI_GEOVICE/api/geo/ListarProvincias';
         $data = trim($_GET['deps']);
         $data = stripslashes($data);
         $data = htmlspecialchars($data);
@@ -216,7 +216,7 @@ class GeoController extends Controller
                 header("Access-Control-Allow-Headers: {$_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS']}");  
         }
 
-        $url = 'http://qa.agrorural.gob.pe/WEBAPI_GEOVICE/api/geo/ListarDistritos';
+        $url = 'http://intranet.agrorural.gob.pe/WEBAPI_GEOVICE/api/geo/ListarDistritos';
         $data = trim($_GET['deps']);
         $data = stripslashes($data);
         $data = htmlspecialchars($data);
@@ -313,7 +313,7 @@ class GeoController extends Controller
                 header("Access-Control-Allow-Headers: {$_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS']}");  
         }
 
-        $url = 'http://qa.agrorural.gob.pe/WEBAPI_GEOVICE/api/geo/ListarCCPP';
+        $url = 'http://intranet.agrorural.gob.pe/WEBAPI_GEOVICE/api/geo/ListarCCPP';
         $data = trim($_GET['deps']);
         $data = stripslashes($data);
         $data = htmlspecialchars($data);
