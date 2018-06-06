@@ -207,15 +207,7 @@ function showDepartamentos(deno, tipo){
       </div>
     `);
 
-    $(".chart__image").html(`
-      <div class="chart__image-container">
-      <div class="chartShow" id="chartDep" style="height:300px"></div>
-      </div>
-    `);
-
     let tableData = [];
-    let chartMultiData = [];
-    let chartData = [];
 
     switch(tipo) {
         case 'IDR':
@@ -232,13 +224,7 @@ function showDepartamentos(deno, tipo){
 
             event.forEach(function(feature){
               tableData.push([feature.f.ID_DEP, feature.f.NOMBDEP, feature.f.Nro_pdn, 'S/. ' + numberWithCommas(feature.f.Nro_pdnc), numberWithCommas(feature.f.Inversion_pdnc), numberWithCommas(feature.f.Nro_pdt)]);
-              chartMultiData.push({name: feature.f.NOMBDEP, data: {"Familias": parseInt(feature.f.Inversion_pdnc), "Hectáreas": parseInt(feature.f.Nro_pdt)}});
-              //console.log(feature.f.Nro_pdn);
             });
-    
-            new Chartkick.ColumnChart("chartDep", chartMultiData, {legend: "bottom"});
-    
-            //console.log(chartMultiData);
 
             break;
 
@@ -256,13 +242,7 @@ function showDepartamentos(deno, tipo){
 
             event.forEach(function(feature){
               tableData.push([feature.f.ID_DEP, feature.f.NOMBDEP, feature.f.Nro_pdn, 'S/. ' + numberWithCommas(feature.f.Nro_pdnc), numberWithCommas(feature.f.Inversion_pdnc), numberWithCommas(feature.f.Nro_pdt)]);
-              chartMultiData.push({name: feature.f.NOMBDEP, data: {"Familias": parseInt(feature.f.Inversion_pdnc), "Hectáreas": parseInt(feature.f.Nro_pdt)}});
-              //console.log(feature.f.Nro_pdn);
             });
-
-            new Chartkick.ColumnChart("chartDep", chartMultiData, {legend: "bottom"});
-
-            //console.log(chartMultiData);
 
             break;
 
@@ -281,13 +261,7 @@ function showDepartamentos(deno, tipo){
 
             event.forEach(function(feature){
               tableData.push([feature.f.ID_DEP, feature.f.NOMBDEP, feature.f.Nro_pdn, 'S/. ' + numberWithCommas(feature.f.Nro_pdnc), numberWithCommas(feature.f.Inversion_pdnc), numberWithCommas(feature.f.Nro_pdt)]);
-              chartMultiData.push({name: feature.f.NOMBDEP, data: {"Familias": parseInt(feature.f.Inversion_pdnc), "Hectáreas": parseInt(feature.f.Nro_pdt)}});
-              //console.log(feature.f.Nro_pdn);
             });
-
-            new Chartkick.ColumnChart("chartDep", chartMultiData, {legend: "bottom"});
-
-            //console.log(chartMultiData);
 
             break;
 
@@ -305,16 +279,12 @@ function showDepartamentos(deno, tipo){
 
         event.forEach(function(feature){
           tableData.push([feature.f.ID_DEP, feature.f.NOMBDEP, feature.f.Nro_pdn, 'S/. ' + numberWithCommas(feature.f.Nro_pdnc), numberWithCommas(feature.f.Inversion_pdnc), numberWithCommas(feature.f.Nro_pdt)]);
-          chartMultiData.push({name: feature.f.NOMBDEP, data: {"Familias": parseInt(feature.f.Inversion_pdnc), "Hectáreas": parseInt(feature.f.Nro_pdt)}});
-        });
-        
-        //console.log(tableData);
-        new Chartkick.ColumnChart("chartDep", chartMultiData, {legend: "bottom"});
-
-        //console.log(chartMultiData);
+         });
     }
+
     $(function() {
       loadState();
+      getRegion();
       
       $('#tblDep').DataTable( {
         "order": [[ 3, "desc" ]],
@@ -359,6 +329,8 @@ function showDepartamentos(deno, tipo){
 
       let chartHeight= $('.chart').height()
       $('#map').height(chartHeight);
+
+      
       //console.log(chartHeight);
     });
   });
@@ -441,7 +413,7 @@ function showProvincias(id, deno, tipo){
             event.forEach(function(feature){
               tableData.push([feature.f.ID_PROV, feature.f.NOM_PROV, feature.f.Nro_pdn, 'S/. ' + numberWithCommas(feature.f.Nro_pdnc), numberWithCommas(feature.f.Inversion_pdnc), numberWithCommas(feature.f.Nro_pdt)]);
               chartMultiData.push({name: feature.f.NOM_PROV, data: {"Familias": parseInt(feature.f.Inversion_pdnc), "Hectáreas": parseInt(feature.f.Nro_pdt)}});
-              //(feature.f);
+              //console.log(feature.f.NOM_PROV);
             });
 
             new Chartkick.ColumnChart("chartProv", chartMultiData, {legend: "bottom"});
@@ -463,7 +435,7 @@ function showProvincias(id, deno, tipo){
             event.forEach(function(feature){
               tableData.push([feature.f.ID_PROV, feature.f.NOM_PROV, feature.f.Nro_pdn, 'S/. ' + numberWithCommas(feature.f.Nro_pdnc), numberWithCommas(feature.f.Inversion_pdnc), numberWithCommas(feature.f.Nro_pdt)]);
               chartMultiData.push({name: feature.f.NOM_PROV, data: {"Familias": parseInt(feature.f.Inversion_pdnc), "Hectáreas": parseInt(feature.f.Nro_pdt)}});
-              //console.log(feature.f);
+              //console.log(feature.f.NOM_PROV);
             });
 
             new Chartkick.ColumnChart("chartProv", chartMultiData, {legend: "bottom"});
@@ -486,7 +458,7 @@ function showProvincias(id, deno, tipo){
             event.forEach(function(feature){
               tableData.push([feature.f.ID_PROV, feature.f.NOM_PROV, feature.f.Nro_pdn, 'S/. ' + numberWithCommas(feature.f.Nro_pdnc), numberWithCommas(feature.f.Inversion_pdnc), numberWithCommas(feature.f.Nro_pdt)]);
               chartMultiData.push({name: feature.f.NOM_PROV, data: {"Familias": parseInt(feature.f.Inversion_pdnc), "Hectáreas": parseInt(feature.f.Nro_pdt)}});
-              //console.log(feature.f);
+              //console.log(feature.f.NOM_PROV);
             });
 
             new Chartkick.ColumnChart("chartProv", chartMultiData, {legend: "bottom"});
@@ -644,7 +616,7 @@ function showDistritos(id, deno, tipo){
 
             event.forEach(function(feature){
               tableData.push([feature.f.ID_DIS, feature.f.NOM_DIS, feature.f.Nro_pdn, 'S/. ' + numberWithCommas(feature.f.Nro_pdnc), numberWithCommas(feature.f.Inversion_pdnc), numberWithCommas(feature.f.Nro_pdt)]);
-              chartMultiData.push({name: feature.f.NOM_PROV, data: {"Familias": parseInt(feature.f.Inversion_pdnc), "Hectáreas": parseInt(feature.f.Nro_pdt)}});
+              chartMultiData.push({name: feature.f.NOM_DIS, data: {"Familias": parseInt(feature.f.Inversion_pdnc), "Hectáreas": parseInt(feature.f.Nro_pdt)}});
             });
 
             new Chartkick.ColumnChart("chartDis", chartMultiData, {legend: "bottom"});
@@ -664,7 +636,7 @@ function showDistritos(id, deno, tipo){
 
             event.forEach(function(feature){
               tableData.push([feature.f.ID_DIS, feature.f.NOM_DIS, feature.f.Nro_pdn, 'S/. ' + numberWithCommas(feature.f.Nro_pdnc), numberWithCommas(feature.f.Inversion_pdnc), numberWithCommas(feature.f.Nro_pdt)]);
-              chartMultiData.push({name: feature.f.NOM_PROV, data: {"Familias": parseInt(feature.f.Inversion_pdnc), "Hectáreas": parseInt(feature.f.Nro_pdt)}});
+              chartMultiData.push({name: feature.f.NOM_DIS, data: {"Familias": parseInt(feature.f.Inversion_pdnc), "Hectáreas": parseInt(feature.f.Nro_pdt)}});
             });
 
             new Chartkick.ColumnChart("chartDis", chartMultiData, {legend: "bottom"});
@@ -685,7 +657,7 @@ function showDistritos(id, deno, tipo){
 
             event.forEach(function(feature){
               tableData.push([feature.f.ID_DIS, feature.f.NOM_DIS, feature.f.Nro_pdn, 'S/. ' + numberWithCommas(feature.f.Nro_pdnc), numberWithCommas(feature.f.Inversion_pdnc), numberWithCommas(feature.f.Nro_pdt)]);
-              chartMultiData.push({name: feature.f.NOM_PROV, data: {"Familias": parseInt(feature.f.Inversion_pdnc), "Hectáreas": parseInt(feature.f.Nro_pdt)}});
+              chartMultiData.push({name: feature.f.NOM_DIS, data: {"Familias": parseInt(feature.f.Inversion_pdnc), "Hectáreas": parseInt(feature.f.Nro_pdt)}});
             });
 
             new Chartkick.ColumnChart("chartDis", chartMultiData, {legend: "bottom"});
@@ -705,7 +677,7 @@ function showDistritos(id, deno, tipo){
 
           event.forEach(function(feature){
             tableData.push([feature.f.ID_DIS, feature.f.NOM_DIS, feature.f.Nro_pdn, 'S/. ' + numberWithCommas(feature.f.Nro_pdnc), numberWithCommas(feature.f.Inversion_pdnc), numberWithCommas(feature.f.Nro_pdt)]);
-            chartMultiData.push({name: feature.f.NOM_PROV, data: {"Familias": parseInt(feature.f.Inversion_pdnc), "Hectáreas": parseInt(feature.f.Nro_pdt)}});
+            chartMultiData.push({name: feature.f.NOM_DIS, data: {"Familias": parseInt(feature.f.Inversion_pdnc), "Hectáreas": parseInt(feature.f.Nro_pdt)}});
           });
 
           new Chartkick.ColumnChart("chartDis", chartMultiData, {legend: "bottom"});
@@ -846,7 +818,7 @@ function showCP(id, deno, tipo){
             console.log(feature.f);
 
             tableData.push([feature.f.CODCP, feature.f.NOMBRE_PROYECTO, 'S/. ' + numberWithCommas(feature.f.MONTO_EXPEDIENTE_TECNICO), feature.f.TIPOLOGIA, feature.f.ORGANIZACION, feature.f.UNIDAD_FORMULADORA]);
-            chartMultiData.push({name: feature.f.NOM_PROV, data: {"Familias": parseInt(feature.f.Inversion_pdnc), "Hectáreas": parseInt(feature.f.Nro_pdt)}});
+            chartMultiData.push({name: feature.f.NOMCP, data: {"Familias": parseInt(feature.f.Inversion_pdnc), "Hectáreas": parseInt(feature.f.Nro_pdt)}});
           });
       
           new Chartkick.ColumnChart("chartCP", chartMultiData, {legend: "bottom"});
@@ -869,7 +841,7 @@ function showCP(id, deno, tipo){
             console.log(feature.f);
       
             tableData.push([feature.f.CODCP, feature.f.NOMBRE_PROYECTO, 'S/. ' + numberWithCommas(feature.f.MONTO_EXPEDIENTE_TECNICO), feature.f.TIPOLOGIA, feature.f.ORGANIZACION, feature.f.UNIDAD_FORMULADORA]);
-            chartMultiData.push({name: feature.f.NOM_PROV, data: {"Familias": parseInt(feature.f.Inversion_pdnc), "Hectáreas": parseInt(feature.f.Nro_pdt)}});
+            chartMultiData.push({name: feature.f.NOMCP, data: {"Familias": parseInt(feature.f.Inversion_pdnc), "Hectáreas": parseInt(feature.f.Nro_pdt)}});
           });
       
           new Chartkick.ColumnChart("chartCP", chartMultiData, {legend: "bottom"});
@@ -893,7 +865,7 @@ function showCP(id, deno, tipo){
             console.log(feature.f);
       
             tableData.push([feature.f.CODCP, feature.f.NOMBRE_PROYECTO, 'S/. ' + numberWithCommas(feature.f.MONTO_EXPEDIENTE_TECNICO), feature.f.TIPOLOGIA, feature.f.ORGANIZACION, feature.f.UNIDAD_FORMULADORA]);
-            chartMultiData.push({name: feature.f.NOM_PROV, data: {"Familias": parseInt(feature.f.Inversion_pdnc), "Hectáreas": parseInt(feature.f.Nro_pdt)}});
+            chartMultiData.push({name: feature.f.NOMCP, data: {"Familias": parseInt(feature.f.Inversion_pdnc), "Hectáreas": parseInt(feature.f.Nro_pdt)}});
           });
       
           new Chartkick.ColumnChart("chartCP", chartMultiData, {legend: "bottom"});
@@ -917,7 +889,7 @@ function showCP(id, deno, tipo){
           console.log(feature.f);
     
           tableData.push([feature.f.CODCP, feature.f.NOMBRE_PROYECTO, 'S/. ' + numberWithCommas(feature.f.MONTO_EXPEDIENTE_TECNICO), feature.f.TIPOLOGIA, feature.f.ORGANIZACION, feature.f.UNIDAD_FORMULADORA]);
-          chartMultiData.push({name: feature.f.NOM_PROV, data: {"Familias": parseInt(feature.f.Inversion_pdnc), "Hectáreas": parseInt(feature.f.Nro_pdt)}});
+          chartMultiData.push({name: feature.f.NOMCP, data: {"Familias": parseInt(feature.f.Inversion_pdnc), "Hectáreas": parseInt(feature.f.Nro_pdt)}});
         });
     
         new Chartkick.ColumnChart("chartCP", chartMultiData, {legend: "bottom"});
@@ -1087,8 +1059,6 @@ capaDistritos.addListener('click', function(event) {
 });
 
 $(document).ready(function() {
-    getRegion();
-    
     $.ajax({
       url: 'http://qa.agrorural.gob.pe/WebAPI_GeoAgro/api/geo/ListarDepartamentoscombo',
       data: "{}",
@@ -1183,6 +1153,13 @@ $(document).ready(function() {
 });
 
 function getRegion() {
+  $(".chart__image").html(`
+      <div class="chart__image-container">
+      <div class="page-header"><h3>Por regiones</h3></div>
+      <div class="chartShow" id="chartDep" style="height:300px"></div>
+      </div>
+  `);
+
   $.ajax({
     url: 'http://qa.agrorural.gob.pe/WEBAPI_GEOVICE/api/geo/ReportePorRegion',
     data: "{}",
@@ -1193,15 +1170,15 @@ function getRegion() {
     contentType: "application/json;",
     type: "post",
     success: function (resultado) {
-      console.log(resultado);
+      //console.log(resultado);
 
-        chartMultiData = [];
+        let chartData = [];
         
-        //console.log(tableData);
-        //new Chartkick.ColumnChart("chartDep", chartMultiData, {legend: "bottom"});
-        // $.each(resultado, function (index, value) {
-        //   chartMultiData.push([]);
-        // });
+        $.each(resultado, function (index, value) {
+          chartData.push([value.Region_Natural, value.MONTO_EXPEDIENTE_TECNICO]);
+        });
+
+        new Chartkick.PieChart("chartDep", chartData, {donut: true, prefix: "S/ ", legend: "bottom"})
     },
     error: function (xhr, status, error) {
 

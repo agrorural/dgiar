@@ -14,8 +14,8 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.green.min.css" />
         
         <!--Load the AJAX API-->
-        <script src="https://www.gstatic.com/charts/loader.js"></script>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/chartkick/2.2.4/chartkick.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/chartkick/2.3.0/chartkick.js"></script>
         @yield('head')
     </head>
     <body>
