@@ -207,117 +207,30 @@ function showDepartamentos(deno, tipo){
       </div>
     `);
 
-    let tableData = [];
-
-    switch(tipo) {
-        case 'IDR':
-          $(".chart__table").find("table thead").append(`
-            <tr>
-              <th>ID</th>
-              <th>Departamento</th>
-              <th>Duración (m)</th>
-              <th>Exp. Téc.</th>
-              <th>Familias Benef.</th>
-              <th>Hectáreas</th>
-            </tr>
-          `);
-
-            event.forEach(function(feature){
-              tableData.push([feature.f.ID_DEP, feature.f.NOMBDEP, feature.f.Nro_pdn, 'S/. ' + numberWithCommas(feature.f.Nro_pdnc), numberWithCommas(feature.f.Inversion_pdnc), numberWithCommas(feature.f.Nro_pdt)]);
-            });
-
-            break;
-
-        case 'IRR':
-            $(".chart__table").find("table thead").append(`
-            <tr>
-              <th>ID</th>
-              <th>Departamento</th>
-              <th>Duración (m)</th>
-              <th>Exp. Téc.</th>
-              <th>Familias Benef.</th>
-              <th>Hectáreas</th>
-            </tr>
-          `);
-
-            event.forEach(function(feature){
-              tableData.push([feature.f.ID_DEP, feature.f.NOMBDEP, feature.f.Nro_pdn, 'S/. ' + numberWithCommas(feature.f.Nro_pdnc), numberWithCommas(feature.f.Inversion_pdnc), numberWithCommas(feature.f.Nro_pdt)]);
-            });
-
-            break;
-
-        case 'TEC':
-
-            $(".chart__table").find("table thead").append(`
-            <tr>
-              <th>ID</th>
-              <th>Departamento</th>
-              <th>Duración (m)</th>
-              <th>Exp. Téc.</th>
-              <th>Familias Benef.</th>
-              <th>Hectáreas</th>
-            </tr>
-          `);
-
-            event.forEach(function(feature){
-              tableData.push([feature.f.ID_DEP, feature.f.NOMBDEP, feature.f.Nro_pdn, 'S/. ' + numberWithCommas(feature.f.Nro_pdnc), numberWithCommas(feature.f.Inversion_pdnc), numberWithCommas(feature.f.Nro_pdt)]);
-            });
-
-            break;
-
-        default:
-        $(".chart__table").find("table thead").append(`
-          <tr>
-            <th>ID</th>
-            <th>Departamento</th>
-            <th>Duración (m)</th>
-            <th>Exp. Téc.</th>
-            <th>Familias Benef.</th>
-            <th>Hectáreas</th>
-          </tr>
-        `);
-
-        event.forEach(function(feature){
-          tableData.push([feature.f.ID_DEP, feature.f.NOMBDEP, feature.f.Nro_pdn, 'S/. ' + numberWithCommas(feature.f.Nro_pdnc), numberWithCommas(feature.f.Inversion_pdnc), numberWithCommas(feature.f.Nro_pdt)]);
-         });
-    }
-
     $(function() {
       loadState();
-      getRegion();
       
-      $('#tblDep').DataTable( {
-        "order": [[ 3, "desc" ]],
+      getRegion();
+
+      $(".chart__table").find("table thead").append(`
+         <tr>
+           <th>ID</th>
+           <th>Departamento</th>
+           <th>Duración (m)</th>
+           <th>Exp. Téc.</th>
+           <th>Familias Benef.</th>
+           <th>Hectáreas</th>
+         </tr>
+       `);
+
+      let t = $('#tblDep').DataTable({
         "paging": false,
         "searching": false,
-        "language": {
-            "sProcessing":     "Procesando...",
-            "sLengthMenu":     "Mostrar _MENU_ registros",
-            "sZeroRecords":    "No se encontraron resultados",
-            "sEmptyTable":     "Ningún dato disponible en esta tabla",
-            "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-            "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
-            "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
-            "sInfoPostFix":    "",
-            "sSearch":         "Buscar:",
-            "sUrl":            "",
-            "sInfoThousands":  ",",
-            "sLoadingRecords": "Cargando...",
-            "oPaginate": {
-                "sFirst":    "Primero",
-                "sLast":     "Último",
-                "sNext":     "Siguiente",
-                "sPrevious": "Anterior"
-            },
-            "oAria": {
-                "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
-                "sSortDescending": ": Activar para ordenar la columna de manera descendente"
-            }
-        },
+        "ordering": false,
+        "bInfo" : false,
         "fnCreatedRow": function( nRow, aData, iDataIndex ) {
-            $(nRow).attr('id', aData[0]);
+          $(nRow).attr('id', aData[0]);
         }, 
-          data: tableData,
           "columnDefs": [ {
             "targets": 0,
             "visible": false
@@ -325,7 +238,43 @@ function showDepartamentos(deno, tipo){
           { className: "dt-body-right text-right", "targets": [ 2, 3, 4, 5 ] },
           { "width": "10%", "targets": [2, 4, 5] }
         ]
-      } );
+      });
+
+      let meses = 0;
+      let exp = 0;
+      let fam = 0;
+      let hect = 0;
+
+      event.forEach(function(feature){
+        
+        meses = meses + parseInt(feature.f.Nro_pdn);
+        exp = exp + parseInt(feature.f.Nro_pdnc);
+        fam = fam + parseInt(feature.f.Inversion_pdnc);
+        hect = hect + parseInt(feature.f.Nro_pdt);
+
+        t.row.add( [
+          feature.f.ID_DEP, 
+          feature.f.NOMBDEP, 
+          feature.f.Nro_pdn, 
+          'S/. ' + numberWithCommas(feature.f.Nro_pdnc), 
+          numberWithCommas(feature.f.Inversion_pdnc), 
+          numberWithCommas(feature.f.Nro_pdt) 
+        ]).draw( false );
+
+
+      });
+
+      var trDOM = t.row.add( [
+        '', 
+        'TOTAL', 
+        meses, 
+        'S/ ' + numberWithCommas(exp), 
+        fam, 
+        hect
+      ]).draw( false ).node();
+
+      $( trDOM ).addClass('table-success');
+
 
       let chartHeight= $('.chart').height()
       $('#map').height(chartHeight);
@@ -337,8 +286,9 @@ function showDepartamentos(deno, tipo){
 
   capaDepartamentos.setStyle(function(feature) {
     return ({
-      strokeColor: feature.getProperty('color'),
+      // strokeColor: feature.getProperty('color'),
       fillColor: feature.getProperty('color'),
+      strokeOpacity: 0.5,
       fillOpacity: 0.7,
       strokeWeight: 1
     });
@@ -397,137 +347,73 @@ function showProvincias(id, deno, tipo){
     let chartData = [];
     let chartMultiData = [];
 
-    switch(tipo) {
-        case 'IDR':
-              $(".chart__table").find("table thead").append(`
-              <tr>
-                <th>ID</th>
-                <th>Provincia</th>
-                <th>Duración (m)</th>
-                <th>Exp. Téc.</th>
-                <th>Familias Benef.</th>
-                <th>Hectáreas</th>
-              </tr>
-            `);
-            
-            event.forEach(function(feature){
-              tableData.push([feature.f.ID_PROV, feature.f.NOM_PROV, feature.f.Nro_pdn, 'S/. ' + numberWithCommas(feature.f.Nro_pdnc), numberWithCommas(feature.f.Inversion_pdnc), numberWithCommas(feature.f.Nro_pdt)]);
-              chartMultiData.push({name: feature.f.NOM_PROV, data: {"Familias": parseInt(feature.f.Inversion_pdnc), "Hectáreas": parseInt(feature.f.Nro_pdt)}});
-              //console.log(feature.f.NOM_PROV);
-            });
-
-            new Chartkick.ColumnChart("chartProv", chartMultiData, {legend: "bottom"});
-
-            break;
-
-        case 'IRR':
-              $(".chart__table").find("table thead").append(`
-              <tr>
-                <th>ID</th>
-                <th>Provincia</th>
-                <th>Duración (m)</th>
-                <th>Exp. Téc.</th>
-                <th>Familias Benef.</th>
-                <th>Hectáreas</th>
-              </tr>
-            `);
-            
-            event.forEach(function(feature){
-              tableData.push([feature.f.ID_PROV, feature.f.NOM_PROV, feature.f.Nro_pdn, 'S/. ' + numberWithCommas(feature.f.Nro_pdnc), numberWithCommas(feature.f.Inversion_pdnc), numberWithCommas(feature.f.Nro_pdt)]);
-              chartMultiData.push({name: feature.f.NOM_PROV, data: {"Familias": parseInt(feature.f.Inversion_pdnc), "Hectáreas": parseInt(feature.f.Nro_pdt)}});
-              //console.log(feature.f.NOM_PROV);
-            });
-
-            new Chartkick.ColumnChart("chartProv", chartMultiData, {legend: "bottom"});
-
-            break;
-
-        case 'TEC':
-
-              $(".chart__table").find("table thead").append(`
-              <tr>
-                <th>ID</th>
-                <th>Provincia</th>
-                <th>Duración (m)</th>
-                <th>Exp. Téc.</th>
-                <th>Familias Benef.</th>
-                <th>Hectáreas</th>
-              </tr>
-            `);
-            
-            event.forEach(function(feature){
-              tableData.push([feature.f.ID_PROV, feature.f.NOM_PROV, feature.f.Nro_pdn, 'S/. ' + numberWithCommas(feature.f.Nro_pdnc), numberWithCommas(feature.f.Inversion_pdnc), numberWithCommas(feature.f.Nro_pdt)]);
-              chartMultiData.push({name: feature.f.NOM_PROV, data: {"Familias": parseInt(feature.f.Inversion_pdnc), "Hectáreas": parseInt(feature.f.Nro_pdt)}});
-              //console.log(feature.f.NOM_PROV);
-            });
-
-            new Chartkick.ColumnChart("chartProv", chartMultiData, {legend: "bottom"});
-
-            break;
-
-        default:
-
-              $(".chart__table").find("table thead").append(`
-                <tr>
-                  <th>ID</th>
-                  <th>Provincia</th>
-                  <th>Duración (m)</th>
-                  <th>Exp. Téc.</th>
-                  <th>Familias Benef.</th>
-                  <th>Hectáreas</th>
-                </tr>
-              `);
-              
-              event.forEach(function(feature){
-                tableData.push([feature.f.ID_PROV, feature.f.NOM_PROV, feature.f.Nro_pdn, 'S/. ' + numberWithCommas(feature.f.Nro_pdnc), numberWithCommas(feature.f.Inversion_pdnc), numberWithCommas(feature.f.Nro_pdt)]);
-                chartMultiData.push({name: feature.f.NOM_PROV, data: {"Familias": parseInt(feature.f.Inversion_pdnc), "Hectáreas": parseInt(feature.f.Nro_pdt)}});
-                //console.log(feature.f);
-              });
-
-              new Chartkick.ColumnChart("chartProv", chartMultiData, {legend: "bottom"});
-    }
-
     $(function() {
       loadState();
-      
-      $('#tblProv').DataTable( {
-        "order": [[ 3, "desc" ]],
+
+      $(".chart__table").find("table thead").append(`
+         <tr>
+           <th>ID</th>
+           <th>Provincia</th>
+           <th>Duración (m)</th>
+           <th>Exp. Téc.</th>
+           <th>Familias Benef.</th>
+           <th>Hectáreas</th>
+         </tr>
+       `);
+
+      let tblProv = $('#tblProv').DataTable({
         "paging": false,
         "searching": false,
-        "language": {
-            "sProcessing":     "Procesando...",
-            "sLengthMenu":     "Mostrar _MENU_ registros",
-            "sZeroRecords":    "No se encontraron resultados",
-            "sEmptyTable":     "Ningún dato disponible en esta tabla",
-            "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-            "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
-            "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
-            "sInfoPostFix":    "",
-            "sSearch":         "Buscar:",
-            "sUrl":            "",
-            "sInfoThousands":  ",",
-            "sLoadingRecords": "Cargando...",
-            "oPaginate": {
-                "sFirst":    "Primero",
-                "sLast":     "Último",
-                "sNext":     "Siguiente",
-                "sPrevious": "Anterior"
-            },
-            "oAria": {
-                "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
-                "sSortDescending": ": Activar para ordenar la columna de manera descendente"
-            }
-        },
+        "ordering": false,
+        "bInfo" : false,
         "fnCreatedRow": function( nRow, aData, iDataIndex ) {
-            $(nRow).attr('id', aData[0]);
+          $(nRow).attr('id', aData[0]);
         }, 
-          data: tableData,
           "columnDefs": [ {
             "targets": 0,
             "visible": false
           },
-          { className: "dt-body-right text-right", "targets": [ 2, 3, 4, 5 ] }]
-      } );
+          { className: "dt-body-right text-right", "targets": [ 2, 3, 4, 5 ] },
+          { "width": "10%", "targets": [2, 4, 5] }
+        ]
+      });
+
+      let tblProvmeses = 0;
+      let tblProvexp = 0;
+      let tblProvfam = 0;
+      let tblProvhect = 0;
+
+      event.forEach(function(feature){
+        
+        tblProvmeses = tblProvmeses + parseInt(feature.f.Nro_pdn);
+        tblProvexp = tblProvexp + parseInt(feature.f.Nro_pdnc);
+        tblProvfam = tblProvfam + parseInt(feature.f.Inversion_pdnc);
+        tblProvhect = tblProvhect + parseInt(feature.f.Nro_pdt);
+
+        tblProv.row.add( [
+          feature.f.ID_PROV, 
+          feature.f.NOM_PROV, 
+          feature.f.Nro_pdn, 
+          'S/. ' + numberWithCommas(feature.f.Nro_pdnc), 
+          numberWithCommas(feature.f.Inversion_pdnc), 
+          numberWithCommas(feature.f.Nro_pdt) 
+        ]).draw( false );
+
+        chartMultiData.push({name: feature.f.NOM_PROV, data: {"Familias": parseInt(feature.f.Inversion_pdnc), "Hectáreas": parseInt(feature.f.Nro_pdt)}});
+      });
+
+      var tblProvtrDOM = tblProv.row.add( [
+        '', 
+        'TOTAL', 
+        tblProvmeses, 
+        'S/ ' + numberWithCommas(tblProvexp), 
+        tblProvfam, 
+        tblProvhect
+      ]).draw( false ).node();
+
+      $( tblProvtrDOM ).addClass('table-success');
+
+      new Chartkick.ColumnChart("chartProv", chartMultiData, {legend: "bottom"});
 
       let chartHeight= $('.chart').height()
       $('#map').height(chartHeight);
@@ -538,8 +424,9 @@ function showProvincias(id, deno, tipo){
 
   capaProvincias.setStyle(function(feature) {
     return ({
-        strokeColor: feature.getProperty('color'),
+        // strokeColor: feature.getProperty('color'),
         fillColor: feature.getProperty('color'),
+        strokeOpacity: 0.5,
         fillOpacity: 0.7,
         strokeWeight: 1
       });
@@ -602,128 +489,74 @@ function showDistritos(id, deno, tipo){
     let chartMultiData = [];
     let chartData = [];
 
-    switch(tipo) {
-        case 'IDR':
-            $(".chart__table").find("table thead").append(`
-              <tr>
-                <th>ID</th>
-                <th>Distrito</th>
-                <th>Duración (m)</th>
-                <th>Exp. Téc.</th>
-                <th>Familias Benef.</th>
-                <th>Hectáreas</th>
-            `);
-
-            event.forEach(function(feature){
-              tableData.push([feature.f.ID_DIS, feature.f.NOM_DIS, feature.f.Nro_pdn, 'S/. ' + numberWithCommas(feature.f.Nro_pdnc), numberWithCommas(feature.f.Inversion_pdnc), numberWithCommas(feature.f.Nro_pdt)]);
-              chartMultiData.push({name: feature.f.NOM_DIS, data: {"Familias": parseInt(feature.f.Inversion_pdnc), "Hectáreas": parseInt(feature.f.Nro_pdt)}});
-            });
-
-            new Chartkick.ColumnChart("chartDis", chartMultiData, {legend: "bottom"});
-
-            break;
-
-        case 'IRR':
-              $(".chart__table").find("table thead").append(`
-              <tr>
-                <th>ID</th>
-                <th>Distrito</th>
-                <th>Duración (m)</th>
-                <th>Exp. Téc.</th>
-                <th>Familias Benef.</th>
-                <th>Hectáreas</th>
-            `);
-
-            event.forEach(function(feature){
-              tableData.push([feature.f.ID_DIS, feature.f.NOM_DIS, feature.f.Nro_pdn, 'S/. ' + numberWithCommas(feature.f.Nro_pdnc), numberWithCommas(feature.f.Inversion_pdnc), numberWithCommas(feature.f.Nro_pdt)]);
-              chartMultiData.push({name: feature.f.NOM_DIS, data: {"Familias": parseInt(feature.f.Inversion_pdnc), "Hectáreas": parseInt(feature.f.Nro_pdt)}});
-            });
-
-            new Chartkick.ColumnChart("chartDis", chartMultiData, {legend: "bottom"});
-
-            break;
-
-        case 'TEC':
-
-              $(".chart__table").find("table thead").append(`
-              <tr>
-                <th>ID</th>
-                <th>Distrito</th>
-                <th>Duración (m)</th>
-                <th>Exp. Téc.</th>
-                <th>Familias Benef.</th>
-                <th>Hectáreas</th>
-            `);
-
-            event.forEach(function(feature){
-              tableData.push([feature.f.ID_DIS, feature.f.NOM_DIS, feature.f.Nro_pdn, 'S/. ' + numberWithCommas(feature.f.Nro_pdnc), numberWithCommas(feature.f.Inversion_pdnc), numberWithCommas(feature.f.Nro_pdt)]);
-              chartMultiData.push({name: feature.f.NOM_DIS, data: {"Familias": parseInt(feature.f.Inversion_pdnc), "Hectáreas": parseInt(feature.f.Nro_pdt)}});
-            });
-
-            new Chartkick.ColumnChart("chartDis", chartMultiData, {legend: "bottom"});
-
-            break;
-
-        default:
-            $(".chart__table").find("table thead").append(`
-            <tr>
-              <th>ID</th>
-              <th>Distrito</th>
-              <th>Duración (m)</th>
-              <th>Exp. Téc.</th>
-              <th>Familias Benef.</th>
-              <th>Hectáreas</th>
-          `);
-
-          event.forEach(function(feature){
-            tableData.push([feature.f.ID_DIS, feature.f.NOM_DIS, feature.f.Nro_pdn, 'S/. ' + numberWithCommas(feature.f.Nro_pdnc), numberWithCommas(feature.f.Inversion_pdnc), numberWithCommas(feature.f.Nro_pdt)]);
-            chartMultiData.push({name: feature.f.NOM_DIS, data: {"Familias": parseInt(feature.f.Inversion_pdnc), "Hectáreas": parseInt(feature.f.Nro_pdt)}});
-          });
-
-          new Chartkick.ColumnChart("chartDis", chartMultiData, {legend: "bottom"});
-    }
-
     $(function() {
       loadState();
       
-      $('#tblDis').DataTable( {
-        "order": [[ 3, "desc" ]],
+
+      $(".chart__table").find("table thead").append(`
+         <tr>
+           <th>ID</th>
+           <th>Distrito</th>
+           <th>Duración (m)</th>
+           <th>Exp. Téc.</th>
+           <th>Familias Benef.</th>
+           <th>Hectáreas</th>
+         </tr>
+       `);
+
+      let tblDis = $('#tblDis').DataTable({
         "paging": false,
         "searching": false,
-        "language": {
-            "sProcessing":     "Procesando...",
-            "sLengthMenu":     "Mostrar _MENU_ registros",
-            "sZeroRecords":    "No se encontraron resultados",
-            "sEmptyTable":     "Ningún dato disponible en esta tabla",
-            "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-            "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
-            "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
-            "sInfoPostFix":    "",
-            "sSearch":         "Buscar:",
-            "sUrl":            "",
-            "sInfoThousands":  ",",
-            "sLoadingRecords": "Cargando...",
-            "oPaginate": {
-                "sFirst":    "Primero",
-                "sLast":     "Último",
-                "sNext":     "Siguiente",
-                "sPrevious": "Anterior"
-            },
-            "oAria": {
-                "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
-                "sSortDescending": ": Activar para ordenar la columna de manera descendente"
-            }
-        },
+        "ordering": false,
+        "bInfo" : false,
         "fnCreatedRow": function( nRow, aData, iDataIndex ) {
-            $(nRow).attr('id', aData[0]);
+          $(nRow).attr('id', aData[0]);
         }, 
-          data: tableData,
           "columnDefs": [ {
             "targets": 0,
             "visible": false
           },
-          { className: "dt-body-right text-right", "targets": [ 2, 3, 4, 5 ] }]
-      } );
+          { className: "dt-body-right text-right", "targets": [ 2, 3, 4, 5 ] },
+          { "width": "10%", "targets": [2, 4, 5] }
+        ]
+      });
+
+      let tblDismeses = 0;
+      let tblDisexp = 0;
+      let tblDisfam = 0;
+      let tblDishect = 0;
+
+      event.forEach(function(feature){
+        
+        tblDismeses = tblDismeses + parseInt(feature.f.Nro_pdn);
+        tblDisexp = tblDisexp + parseInt(feature.f.Nro_pdnc);
+        tblDisfam = tblDisfam + parseInt(feature.f.Inversion_pdnc);
+        tblDishect = tblDishect + parseInt(feature.f.Nro_pdt);
+
+        tblDis.row.add( [
+          feature.f.ID_DIS, 
+          feature.f.NOM_DIS, 
+          feature.f.Nro_pdn, 
+          'S/. ' + numberWithCommas(feature.f.Nro_pdnc), 
+          numberWithCommas(feature.f.Inversion_pdnc), 
+          numberWithCommas(feature.f.Nro_pdt) 
+        ]).draw( false );
+
+        chartMultiData.push({name: feature.f.NOM_DIS, data: {"Familias": parseInt(feature.f.Inversion_pdnc), "Hectáreas": parseInt(feature.f.Nro_pdt)}});
+      });
+
+      var tblDistrDOM = tblDis.row.add( [
+        '', 
+        'TOTAL', 
+        tblDismeses, 
+        'S/ ' + numberWithCommas(tblDisexp), 
+        tblDisfam, 
+        tblDishect
+      ]).draw( false ).node();
+
+      $( tblDistrDOM ).addClass('table-success');
+
+      new Chartkick.ColumnChart("chartDis", chartMultiData, {legend: "bottom"});
 
       let chartHeight= $('.chart').height()
       $('#map').height(chartHeight);
@@ -738,8 +571,9 @@ function showDistritos(id, deno, tipo){
   capaDistritos.setStyle(function(feature) {
   //console.log(feature);
     return /** @type {google.maps.Data.StyleOptions} */({
-      strokeColor: feature.getProperty('color'),
+      // strokeColor: feature.getProperty('color'),
       fillColor: feature.getProperty('color'),
+      strokeOpacity: 0.5,
       fillOpacity: 0.7,
       strokeWeight: 1
     });
@@ -1170,7 +1004,7 @@ function getRegion() {
     contentType: "application/json;",
     type: "post",
     success: function (resultado) {
-      //console.log(resultado);
+      console.log(resultado);
 
         let chartData = [];
         

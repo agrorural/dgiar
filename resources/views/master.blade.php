@@ -54,6 +54,7 @@
             <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
             <script src="https://cdn.datatables.net/responsive/2.2.0/js/dataTables.responsive.min.js"></script>
             <script src="https://cdn.datatables.net/responsive/2.2.0/js/responsive.bootstrap4.min.js"></script>
+            <script src="https://cdn.datatables.net/plug-ins/1.10.16/api/sum().js"></script>
             <script src="{{ mix('js/map.js') }}"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
             <script src="{{ mix('js/carousel.js') }}"></script>
