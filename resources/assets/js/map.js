@@ -493,16 +493,16 @@ function showDistritos(id, deno, tipo){
       loadState();
       
 
-      $(".chart__table").find("table thead").append(`
-         <tr>
-           <th>ID</th>
-           <th>Distrito</th>
-           <th>Duración (m)</th>
-           <th>Exp. Téc.</th>
-           <th>Familias Benef.</th>
-           <th>Hectáreas</th>
-         </tr>
-       `);
+    $(".chart__table").find("table thead").append(`
+        <tr>
+          <th>ID</th>
+          <th>Distrito</th>
+          <th>Duración (m)</th>
+          <th>Exp. Téc.</th>
+          <th>Familias Benef.</th>
+          <th>Hectáreas</th>
+        </tr>
+      `);
 
       let tblDis = $('#tblDis').DataTable({
         "paging": false,
@@ -990,7 +990,7 @@ function getRegion() {
   $(".chart__image").html(`
       <div class="chart__image-container">
       <div class="page-header"><h3>Por regiones</h3></div>
-      <div class="chartShow" id="chartDep" style="height:300px"></div>
+      <canvas class="chartShow" id="chartDep" style="height:300px"></canvas>
       </div>
   `);
 
@@ -1006,13 +1006,65 @@ function getRegion() {
     success: function (resultado) {
       console.log(resultado);
 
-        let chartData = [];
+        //let chartData = [];
+        let chartLabels = [];
         
         $.each(resultado, function (index, value) {
-          chartData.push([value.Region_Natural, value.MONTO_EXPEDIENTE_TECNICO]);
+          chartLabels.push([value.Region_Natural]);
+          //chartData.push([value.MONTO_EXPEDIENTE_TECNICO]);
         });
 
-        new Chartkick.PieChart("chartDep", chartData, {donut: true, prefix: "S/ ", legend: "bottom"})
+        //new Chartkick.PieChart("chartDep", chartData, {donut: true, prefix: "S/ ", legend: "bottom"})
+        //new Chartkick.PieChart("chartDep", [["Costa", 74585758.7], ["Sierra", 563387425.37]], {donut: true, prefix: "S/ ", legend: "bottom"})
+
+        var ctx = document.getElementById("chartDep");
+        var barChart = new Chart(ctx, {
+          type: 'bar',
+          data: {
+            // labels: ["Costa", "Sierra", "Selva"],
+            labels: chartLabels,
+            datasets: [{
+              label: 'Gráfica',
+              data: [74585758, 563387425, 79308772],
+              //data: chartData,
+              backgroundColor: 'rgba(215, 58, 36, 0.2)',
+              borderColor: 'rgba(215, 58, 36, 1)',
+              borderWidth: 2
+            }],
+          },
+          options: {
+            tooltips: {
+              callbacks: {
+                label: function(tooltipItem, data) {
+                  var value = data.datasets[0].data[tooltipItem.index];
+                  value = value.toString();
+                  value = value.split(/(?=(?:...)*$)/);
+                  value = value.join(',');
+                  return 'S/ ' + value;
+                }
+              } // end callbacks:
+            }, //end tooltips
+            scales: {
+              yAxes: [{
+                ticks: {
+                  beginAtZero:true,
+                  userCallback: function(value, index, values) {
+                    // Convert the number to a string and splite the string every 3 charaters from the end
+                    value = value.toString();
+                    value = value.split(/(?=(?:...)*$)/);
+                    value = value.join(',');
+                    return 'S/ ' + value;
+                  }
+                }
+              }],
+              xAxes: [{
+                ticks: {
+                }
+              }]
+            }
+          }
+        });
+
     },
     error: function (xhr, status, error) {
 
