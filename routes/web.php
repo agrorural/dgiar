@@ -15,6 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/resumen', function () {
+  return view('resumen');
+});
+
 Route::get('/departamentos', 'GeoController@getDepartamentos');
 
 Route::get('/provincias', 'GeoController@getProvincias');
