@@ -469,7 +469,7 @@ capaDepartamentos.addListener('click', function(event) {
         card += '<h4 class="media-heading">' + proj + '</h4>';
         card += '<p>proyectos</p><br>';
         card += '<p><strong>' + IR + '</strong> en infraestructura de riego<br />';
-        card += '<strong>' + IRR + '</strong> en irrigacion<br />';
+        card += '<strong>' + IRR + '</strong> en irrigación<br />';
         card += '<strong>' + RT + '</strong> en riego tecnificado</p>';
         card += '</div>';
         card += '</div>';
