@@ -43,6 +43,10 @@
                     <label>&nbsp;</label>
                       <button id="btnLimpiar" type="button" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> Limpiar</button>
                   </div>
+                  <div class="form-group">
+                    <label>&nbsp;</label>
+                      <a href="/resumen" id="resumen" class="btn btn-default btn-sm"><i class="fas fa-briefcase" aria-hidden="true"></i> Resumen Ejecutivo</a>
+                  </div>
                 </form>
             </div>
             <div class="map">

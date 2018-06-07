@@ -36,7 +36,7 @@ function getRegion() {
       <div class="page-header"><h3>Por regiones</h3></div>
       <canvas class="chartShow" id="chartDep" style="height:300px"></canvas>
       </div>
-  `);
+  `).css('margin-top', '15px');
 
   $.ajax({
     url: 'http://qa.agrorural.gob.pe/WEBAPI_GEOVICE/api/geo/ReportePorRegion',
@@ -121,6 +121,24 @@ function numberWithCommas(x) {
   parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   return parts.join(".");
 }
+
+function repeatedArr(arr) {
+  var a = [], b = [], prev;
+  
+  arr.sort();
+  for ( var i = 0; i < arr.length; i++ ) {
+      if ( arr[i] !== prev ) {
+          a.push(arr[i]);
+          b.push(1);
+      } else {
+          b[b.length-1]++;
+      }
+      prev = arr[i];
+  }
+  
+  return [a, b];
+}
+
 
 map = new google.maps.Map(document.getElementById('map'), {
   zoom: 6,
@@ -366,11 +384,11 @@ capaDepartamentos.addListener('click', function(event) {
   $(".chart__image").html('');
   depID = event.feature.getProperty('ID_DEP');
   dep = event.feature.getProperty('NOMBDEP');
-  hect = event.feature.getProperty('Nro_pdt');
-  fam = event.feature.getProperty('Inversion_pdnc');
+  hect = numberWithCommas(event.feature.getProperty('Nro_pdt'));
+  fam = numberWithCommas(event.feature.getProperty('Inversion_pdnc'));
   exp = numberWithCommas(event.feature.getProperty('Nro_pdnc'));
-  img = '/images/deps/' + depID + '.jpg';
-  
+
+  //let proj = 0;
   
    /* capaDepartamentos.forEach(function (feature) {
      capaDepartamentos.remove(feature);
@@ -390,61 +408,112 @@ capaDepartamentos.addListener('click', function(event) {
   // map.fitBounds(bounds);
   
 
-  console.log(img);
-  let card = '';
-  card += '<div class="chart__table-container">';
-  card += '<div class="card animated fadeIn">';
-  
-  card += '<div class="card-image">';
-  card += '<div class="card-header">' + dep + '</div>';
-  card += '</div>';
+  //console.log(event);
 
-  card += '<div class="card-body">';
 
-  card += '<div class="media">';
-  card += '<div class="media-left"><i class="fas fa-money-bill-alt"></i></div>';
-  card += '<div class="media-body">';
-  card += '<h4 class="media-heading">16 <small>proyectos</small></h4>';
-  card += '<p><strong>8</strong> en infraestructura de riego<br />';
-  card += '<strong>3</strong> en irrigacion<br />';
-  card += '<strong>5</strong> en riego tecnificado</p>';
-  card += '</div>';
-  card += '</div>';
-
-  card += '<div class="media">';
-  card += '<div class="media-left"><i class="fas fa-people-carry"></i></div>';
-  card += '<div class="media-body">';
-  card += '<h4 class="media-heading">' + fam + ' <small>familias beneficiarias</small></h4>';
-  card += '</div>';
-  card += '</div>';
-
-  card += '<div class="media">';
-  card += '<div class="media-left"><i class="fas fa-leaf"></i></div>';
-  card += '<div class="media-body">';
-  card += '<h4 class="media-heading">1,188 <small>hectareas</small></h4>';
-  card += '</div>';
-  card += '</div>';
-  
-  card += '<div class="media">';
-  card += '<div class="media-left"><i class="fas fa-money-bill-alt"></i></div>';
-  card += '<div class="media-body">';
-  card += '<h4 class="media-heading">S/ ' + exp + ' <small>en expediente tecnicos</small></h4>';
-  card += '</div>';
-  card += '</div>';
-
-  card += '</div>';
-
-  card += '</div>';
-  card += '</div>';
-
-  $(".chart__table").html(card);
+  $.ajax({
+    url: 'http://intranet.agrorural.gob.pe/WEBAPI_GEOVICE/api/geo/ProyectosPorDepartamento',
+    data: "{'ID_DEP':'" + depID + "'}",
+    headers: { 
+    'Accept': 'application/json',
+    'Content-Type': 'application/json' 
+    },
+    contentType: "application/json;",
+    type: "post",
+    success: function (resultado) {
+      let proj;
+      let types = [];
       
-  let chartHeight= $('.chart').height()
-  $('#map').height(chartHeight);
+        //console.log(resultado);      
+        
+        $.each(resultado, function (index, value) {
+          proj = value.iProyectos;
+          types.push(value.TIPOLOGIA);
+          //console.log(proj);
+        });
 
-  map.setZoom(5);
+        console.log(types);
 
-  console.log(chartHeight);
+
+          let allTypes = {};
+
+          for(var i = 0; i < types.length; ++i) {
+              if(!allTypes[types[i]])
+                  allTypes[types[i]] = 0;
+              ++allTypes[types[i]];
+          }
+
+          console.log(allTypes["INFRAESTRUCTURA DE RIEGO"]);
+
+
+        let IR = ( allTypes["INFRAESTRUCTURA DE RIEGO"] != null ) ? allTypes["INFRAESTRUCTURA DE RIEGO"] : 0; 
+        let IRR = ( allTypes["IRRIGACION"] != null ) ? allTypes["IRRIGACION"] : 0; 
+        let RT = ( allTypes["RIEGO TECNIFICADO"] != null ) ? allTypes["RIEGO TECNIFICADO"] : 0; 
+        
+        let card = '';
+
+        card += '<div class="chart__table-container">';
+        card += '<div class="card">';
+        
+        card += '<div class="card-image">';
+        card += '<div class="card-header"><h1>' + dep + '</h1></div>';
+        card += '</div>';
+
+        card += '<div class="card-body">';
+
+        card += '<div class="media proj">';
+        card += '<div class="media-left"><i class="fas fa-briefcase"></i></div>';
+        card += '<div class="media-body">';
+        card += '<h4 class="media-heading">' + proj + '</h4>';
+        card += '<p>proyectos</p><br>';
+        card += '<p><strong>' + IR + '</strong> en infraestructura de riego<br />';
+        card += '<strong>' + IRR + '</strong> en irrigacion<br />';
+        card += '<strong>' + RT + '</strong> en riego tecnificado</p>';
+        card += '</div>';
+        card += '</div>';
+
+        card += '<div class="media fam">';
+        card += '<div class="media-left"><i class="fas fa-people-carry"></i></div>';
+        card += '<div class="media-body">';
+        card += '<h4 class="media-heading">' + fam + '</h4>';
+        card += '<p>familias beneficiarias</p>';
+        card += '</div>';
+        card += '</div>';
+
+        card += '<div class="media hect">';
+        card += '<div class="media-left"><i class="fas fa-map"></i></div>';
+        card += '<div class="media-body">';
+        card += '<h4 class="media-heading">' + hect + '</h4>';
+        card += '<p>hectareas</p>';
+        card += '</div>';
+        card += '</div>';
+        
+        card += '<div class="media exp">';
+        card += '<div class="media-left"><i class="fas fa-money-bill-alt"></i></div>';
+        card += '<div class="media-body">';
+        card += '<h4 class="media-heading">S/ ' + exp + '</h4>';
+        card += '<p>en expediente tecnicos</p>';
+        card += '</div>';
+        card += '</div>';
+
+        card += '</div>';
+        
+        card += '<div class="card-footer">';
+        card += '<a id="general" href="/resumen" class="btn btn-link"><i class="fas fa-arrow-left"></i> Volver</a>';
+        card += '<a id="full" href="/" class="btn btn-link">Reporte Completo</a>';
+        card += '</div>';
+
+        card += '</div>';
+        card += '</div>';
+
+        $(".chart__table").html(card);
+            
+        let chartHeight= $('.chart').height();
+        $('#map').height( $('.chart').height() );
+
+        map.setZoom(5);
+    }
+  });
 
 });
 
