@@ -363,19 +363,26 @@ showDepartamentos('','');
 
 capaDepartamentos.addListener('click', function(event) {
   //console.log(event);
+  $(".chart__image").html('');
   depID = event.feature.getProperty('ID_DEP');
   dep = event.feature.getProperty('NOMBDEP');
   hect = event.feature.getProperty('Nro_pdt');
   fam = event.feature.getProperty('Inversion_pdnc');
   exp = numberWithCommas(event.feature.getProperty('Nro_pdnc'));
+  img = '/images/deps/' + depID + '.jpg';
   
   
-  // capaDepartamentos.forEach(function (feature) {
-  //   capaDepartamentos.remove(feature);
-  // });
+   /* capaDepartamentos.forEach(function (feature) {
+     capaDepartamentos.remove(feature);
+     capaDepartamentos.add(feature);
+   }); */
+
+/*     capaDepartamentos.revertStyle();
+ *//*     capaDepartamentos.overrideStyle(event.feature, {fillOpacity: 1}); */
 
   // event.feature.setProperty('isColorful', true);
-  // event.feature.setProperty('color', 'white');
+/*   event.feature.setProperty('color', 'white');
+  capaDepartamentos.revertStyle(); */
   // capaProvincias.loadGeoJson('/provincias?deps=' + depID + '&provs=');
   // capaProvincias.setMap(map);
   // let bounds = new google.maps.LatLngBounds();
@@ -383,17 +390,50 @@ capaDepartamentos.addListener('click', function(event) {
   // map.fitBounds(bounds);
   
 
-  console.log(event.feature.f);
+  console.log(img);
   let card = '';
   card += '<div class="chart__table-container">';
-  card += '<div class="card">';
+  card += '<div class="card animated fadeIn">';
+  
+  card += '<div class="card-image">';
   card += '<div class="card-header">' + dep + '</div>';
-  card += '<dl class="card-body">';
-  card += '<dt class="card-title"><i class="fas fa-money-bill-alt"></i> Expediente Técnico</dt>';
-  card += '<dd class="card-text">S/ ' + exp + '</dd>';
-  card += '<dt class="card-title"><i class="fas fa-people-carry"></i> Familias Beneficiarias</dt>';
-  card += '<dd class="card-text">' + fam + '</dd>';
-  card += '</dl>';
+  card += '</div>';
+
+  card += '<div class="card-body">';
+
+  card += '<div class="media">';
+  card += '<div class="media-left"><i class="fas fa-money-bill-alt"></i></div>';
+  card += '<div class="media-body">';
+  card += '<h4 class="media-heading">16 <small>proyectos</small></h4>';
+  card += '<p><strong>8</strong> en infraestructura de riego<br />';
+  card += '<strong>3</strong> en irrigacion<br />';
+  card += '<strong>5</strong> en riego tecnificado</p>';
+  card += '</div>';
+  card += '</div>';
+
+  card += '<div class="media">';
+  card += '<div class="media-left"><i class="fas fa-people-carry"></i></div>';
+  card += '<div class="media-body">';
+  card += '<h4 class="media-heading">' + fam + ' <small>familias beneficiarias</small></h4>';
+  card += '</div>';
+  card += '</div>';
+
+  card += '<div class="media">';
+  card += '<div class="media-left"><i class="fas fa-leaf"></i></div>';
+  card += '<div class="media-body">';
+  card += '<h4 class="media-heading">1,188 <small>hectareas</small></h4>';
+  card += '</div>';
+  card += '</div>';
+  
+  card += '<div class="media">';
+  card += '<div class="media-left"><i class="fas fa-money-bill-alt"></i></div>';
+  card += '<div class="media-body">';
+  card += '<h4 class="media-heading">S/ ' + exp + ' <small>en expediente tecnicos</small></h4>';
+  card += '</div>';
+  card += '</div>';
+
+  card += '</div>';
+
   card += '</div>';
   card += '</div>';
 

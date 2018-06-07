@@ -15,7 +15,7 @@
                   <span class="sr-only">Loading...</span>
                 </div>
               </div>
-                <div class="chart__table" style="margin-bottom: 15px;">
+                <div class="chart__table">
                 </div>
                 <div class="chart__image" style="">
                 </div>
