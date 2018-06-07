@@ -21,9 +21,8 @@ html, body {
   font-size: 12px !important;
 }
 
-body,
-.search {
-  background-color: rgba($green-minagri-light, 0.05);
+body{
+  background-color: #fafafa;
 }
 
 h1,
@@ -66,10 +65,10 @@ h6 {
 }
 
 #app{
+  
 	.app-container{
 		@extend .row;
 		.search{
-
 			@extend .col-sm-12;
 			form{
 				@extend .row;
@@ -150,17 +149,34 @@ h6 {
 	}
 }
 
+#map_chart {
+  position: relative;
+  background-color: white;
+  display: block;
+  // display: flex;
+  // align-items: center;
+  height: 100%;
+}
+
 .spinner-wrapper{
 	// height: 100%;
 	// display: flex;
 	// align-items: center;
 	// justify-content: center;
-	// background-color: #FFFFFF;
-	opacity: .75;
-	@extend .col-sm-12;
-	text-align: center;
-  margin: 50% auto;
-  z-index: 1000;
+	background-color: #FFFFFF;
+	opacity: .85;
+	position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin: auto;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 10000;
 }
 
 .form-control-sm{

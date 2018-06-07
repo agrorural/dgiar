@@ -43,29 +43,30 @@
                     <label>&nbsp;</label>
                       <button id="btnLimpiar" type="button" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> Limpiar</button>
                   </div>
-                  <div class="form-group">
+                  <div class="form-group text-right">
                     <label>&nbsp;</label>
-                      <a href="/resumen" id="resumen" class="btn btn-default btn-sm"><i class="fas fa-briefcase" aria-hidden="true"></i> Resumen Ejecutivo</a>
+                      <a href="/resumen" id="resumen" class="btn btn-danger btn-sm"><i class="fas fa-briefcase" aria-hidden="true"></i> Resumen Ejecutivo</a>
                   </div>
                 </form>
             </div>
-            <div class="map">
-                <div id="map" style="height: 900px"></div>
-            </div>
-            <div class="chart">
-              <div class="spinner-wrapper">
-                <div class="spinner">
-                  <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
-                  <span class="sr-only">Loading...</span>
-                </div>
-              </div>
-                <div class="chart__table" style="margin-bottom: 15px;">
-                </div>
-                <div class="chart__image" style="">
-                </div>
-            </div>
         </div>
-
+        <div id="map_chart" class="row">
+          <div class="spinner-wrapper">
+              <div class="spinner">
+                <p><i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i></p>
+                <p><strong>Cargando mapa...</strong></p>
+              </div>
+            </div>
+          <div class="map col-sm-6">
+            <div id="map"></div>
+          </div>
+          <div class="chart col-sm-6">
+              <div class="chart__table" style="margin-bottom: 15px;">
+              </div>
+              <div class="chart__image" style="">
+              </div>
+          </div>
+        </div>
     </div>
 @stop
 @section('footer')

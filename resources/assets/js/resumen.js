@@ -4,6 +4,8 @@ function initialState(){
   $('.spinner-wrapper').show();
   $(".chart__table").html('');
   $(".chart__image").html('');
+  $("#map").css('visibility', 'hidden');
+  $("#map_chart").css('height', '600px');
 }
 
 function removeAllFeatures(){
@@ -28,6 +30,8 @@ initialState();
 
 function loadState(){
     $('.spinner-wrapper').hide();
+    $("#map").css('visibility', 'visible');
+    $("#map_chart").css('height', '100%');
 }
 
 function getRegion() {
@@ -108,9 +112,6 @@ function getRegion() {
             }
           }
         });
-
-    },
-    error: function (xhr, status, error) {
 
     }
   });
@@ -341,13 +342,14 @@ function showDepartamentos(deno, tipo){
       ]).draw( false ).node();
 
       $( trDOM ).addClass('table-success');
-
-
-      let chartHeight= $('.chart').height()
-      $('#map').height(chartHeight);
-
       
-      //console.log(chartHeight);
+      // let chartHeight= $('.chart').height();
+    
+      // console.log($('#map').height());
+    
+      // $('#map').height( chartHeight );
+    
+      // console.log($('#map').height());
     });
   });
 
@@ -381,7 +383,7 @@ showDepartamentos('','');
 
 capaDepartamentos.addListener('click', function(event) {
   //console.log(event);
-  $(".chart__image").html('');
+  $(".chart__image").html('').css('margin-top', '0px');;
   depID = event.feature.getProperty('ID_DEP');
   dep = event.feature.getProperty('NOMBDEP');
   hect = numberWithCommas(event.feature.getProperty('Nro_pdt'));
@@ -500,18 +502,13 @@ capaDepartamentos.addListener('click', function(event) {
         
         card += '<div class="card-footer">';
         card += '<a id="general" href="/resumen" class="btn btn-link"><i class="fas fa-arrow-left"></i> Volver</a>';
-        card += '<a id="full" href="/" class="btn btn-link">Reporte Completo</a>';
+        card += '<a id="full" href="/" class="btn btn-link" target="_blank">Reporte Completo</a>';
         card += '</div>';
 
         card += '</div>';
         card += '</div>';
 
         $(".chart__table").html(card);
-            
-        let chartHeight= $('.chart').height();
-        $('#map').height( $('.chart').height() );
-
-        map.setZoom(5);
     }
   });
 
@@ -541,4 +538,14 @@ $(document).ready(function() {
 
     }
   });
+});
+
+$(document).ajaxStop(function(){
+  let chartHeight= $('.chart').height();
+    
+  console.log($('#map').height());
+
+  $('#map').height( chartHeight );
+
+  console.log($('#map').height());
 });

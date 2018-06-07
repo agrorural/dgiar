@@ -12,6 +12,8 @@ function initialState(){
   $('.spinner-wrapper').show();
   $(".chart__table").html('');
   $(".chart__image").html('');
+  $("#map").css('visibility', 'hidden');
+  $("#map_chart").css('height', '600px');
 }
 
 function removeAllFeatures(){
@@ -48,6 +50,8 @@ initialState();
 
 function loadState(){
     $('.spinner-wrapper').hide();
+    $("#map").css('visibility', 'visible');
+    $("#map_chart").css('height', '100%');
 }
 
 function numberWithCommas(x) {
@@ -275,12 +279,7 @@ function showDepartamentos(deno, tipo){
 
       $( trDOM ).addClass('table-success');
 
-
-      let chartHeight= $('.chart').height()
-      $('#map').height(chartHeight);
-
-      
-      //console.log(chartHeight);
+      equalHeight();
     });
   });
 
@@ -415,9 +414,7 @@ function showProvincias(id, deno, tipo){
 
       new Chartkick.ColumnChart("chartProv", chartMultiData, {legend: "bottom"});
 
-      let chartHeight= $('.chart').height()
-      $('#map').height(chartHeight);
-      //console.log(chartHeight);
+      equalHeight();
     });
 
   });
@@ -558,11 +555,7 @@ function showDistritos(id, deno, tipo){
 
       new Chartkick.ColumnChart("chartDis", chartMultiData, {legend: "bottom"});
 
-      let chartHeight= $('.chart').height()
-      $('#map').height(chartHeight);
-      //console.log(chartHeight);
-
-
+      equalHeight();
     });
 
     //console.log(tableData);
@@ -635,100 +628,25 @@ function showCP(id, deno, tipo){
     let chartMultiData = [];
 
 
-    switch(tipo) {
-          case 'IDR':
-          $(".chart__table").find("table thead").append(`
-          <tr>
-          <th>ID</th>
-          <th>Proyecto</th>
-          <th>Presupuesto</th>
-          <th>Tipología</th>
-          <th>Organización</th>
-          <th>Ind. Formulad.</th>
-          </tr>
-          `);
-          
-          event.forEach(function(feature){
-            console.log(feature.f);
-
-            tableData.push([feature.f.CODCP, feature.f.NOMBRE_PROYECTO, 'S/. ' + numberWithCommas(feature.f.MONTO_EXPEDIENTE_TECNICO), feature.f.TIPOLOGIA, feature.f.ORGANIZACION, feature.f.UNIDAD_FORMULADORA]);
-            chartMultiData.push({name: feature.f.NOMCP, data: {"Familias": parseInt(feature.f.Inversion_pdnc), "Hectáreas": parseInt(feature.f.Nro_pdt)}});
-          });
-      
-          new Chartkick.ColumnChart("chartCP", chartMultiData, {legend: "bottom"});
-
-          break;
-
-      case 'IRR':
-          $(".chart__table").find("table thead").append(`
-          <tr>
-          <th>ID</th>
-          <th>Proyecto</th>
-          <th>Presupuesto</th>
-          <th>Tipología</th>
-          <th>Organización</th>
-          <th>Ind. Formulad.</th>
-          </tr>
-          `);
-
-          event.forEach(function(feature){
-            console.log(feature.f);
-      
-            tableData.push([feature.f.CODCP, feature.f.NOMBRE_PROYECTO, 'S/. ' + numberWithCommas(feature.f.MONTO_EXPEDIENTE_TECNICO), feature.f.TIPOLOGIA, feature.f.ORGANIZACION, feature.f.UNIDAD_FORMULADORA]);
-            chartMultiData.push({name: feature.f.NOMCP, data: {"Familias": parseInt(feature.f.Inversion_pdnc), "Hectáreas": parseInt(feature.f.Nro_pdt)}});
-          });
-      
-          new Chartkick.ColumnChart("chartCP", chartMultiData, {legend: "bottom"});
-
-
-          break;
-
-      case 'TEC':
-          $(".chart__table").find("table thead").append(`
-          <tr>
-          <th>ID</th>
-          <th>Proyecto</th>
-          <th>Presupuesto</th>
-          <th>Tipología</th>
-          <th>Organización</th>
-          <th>Ind. Formulad.</th>
-          </tr>
-          `);
-          
-          event.forEach(function(feature){
-            console.log(feature.f);
-      
-            tableData.push([feature.f.CODCP, feature.f.NOMBRE_PROYECTO, 'S/. ' + numberWithCommas(feature.f.MONTO_EXPEDIENTE_TECNICO), feature.f.TIPOLOGIA, feature.f.ORGANIZACION, feature.f.UNIDAD_FORMULADORA]);
-            chartMultiData.push({name: feature.f.NOMCP, data: {"Familias": parseInt(feature.f.Inversion_pdnc), "Hectáreas": parseInt(feature.f.Nro_pdt)}});
-          });
-      
-          new Chartkick.ColumnChart("chartCP", chartMultiData, {legend: "bottom"});
-
-
-          break;
-
-      default:
-        $(".chart__table").find("table thead").append(`
-        <tr>
-        <th>ID</th>
-        <th>Proyecto</th>
-        <th>Presupuesto</th>
-        <th>Tipología</th>
-        <th>Organización</th>
-        <th>Ind. Formulad.</th>
-        </tr>
-        `);
-        
-        event.forEach(function(feature){
-          console.log(feature.f);
+    $(".chart__table").find("table thead").append(`
+    <tr>
+    <th>ID</th>
+    <th>Proyecto</th>
+    <th>Presupuesto</th>
+    <th>Tipología</th>
+    <th>Organización</th>
+    <th>Ind. Formulad.</th>
+    </tr>
+    `);
     
-          tableData.push([feature.f.CODCP, feature.f.NOMBRE_PROYECTO, 'S/. ' + numberWithCommas(feature.f.MONTO_EXPEDIENTE_TECNICO), feature.f.TIPOLOGIA, feature.f.ORGANIZACION, feature.f.UNIDAD_FORMULADORA]);
-          chartMultiData.push({name: feature.f.NOMCP, data: {"Familias": parseInt(feature.f.Inversion_pdnc), "Hectáreas": parseInt(feature.f.Nro_pdt)}});
-        });
-    
-        new Chartkick.ColumnChart("chartCP", chartMultiData, {legend: "bottom"});
-  
-      }
+    event.forEach(function(feature){
+      //console.log(feature.f);
+
+      tableData.push([feature.f.CODCP, feature.f.NOMBRE_PROYECTO, 'S/. ' + numberWithCommas(feature.f.MONTO_EXPEDIENTE_TECNICO), feature.f.TIPOLOGIA, feature.f.ORGANIZACION, feature.f.UNIDAD_FORMULADORA]);
+      chartMultiData.push({name: feature.f.NOMCP, data: {"Familias": parseInt(feature.f.Inversion_pdnc), "Hectáreas": parseInt(feature.f.Nro_pdt)}});
+    });
+
+    new Chartkick.ColumnChart("chartCP", chartMultiData, {legend: "bottom"});
 
     $(function() {
       loadState();
@@ -772,12 +690,8 @@ function showCP(id, deno, tipo){
 
       } );
 
-      // new Chartkick.PieChart("chartCP", [["Hombres", NRO_FAMILIAS_M], ["Mujeres", NRO_FAMILIAS_F]], {donut: true});
-      
+      equalHeight();
 
-      let chartHeight= $('.chart').height()
-      $('#map').height(chartHeight);
-      //console.log(chartHeight);
     });
 
     //console.log(tableData);
@@ -1065,9 +979,18 @@ function getRegion() {
           }
         });
 
-    },
-    error: function (xhr, status, error) {
-
     }
   });
+}
+
+
+function equalHeight() {
+    let chartHeight = $('.chart').height();
+      
+    console.log('Mapa antes: '+  $('#map').height());
+  
+    $('#map').height( chartHeight );
+  
+    console.log('Mapa despues: '+  $('#map').height());
+    console.log('chart: '+  chartHeight);
 }
