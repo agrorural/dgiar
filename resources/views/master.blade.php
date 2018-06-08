@@ -20,7 +20,7 @@
     </head>
     <body>
       <header>
-        <h1>Cartera de Proyectos de Invercion para Financimiento Fondo Sierra Azul</h1>
+        <h1>Cartera de Proyectos de Inversión para Financimiento Fondo Sierra Azul</h1>
           <div class="owl-carousel owl-theme">
               <div class="item"><img src="{{ asset('images/01.jpg') }}" class="img-fluid" alt=""></div>
               <div class="item"><img src="{{ asset('images/02.jpg') }}" class="img-fluid" alt=""></div>
@@ -29,6 +29,7 @@
               <div class="item"><img src="{{ asset('images/05.jpg') }}" class="img-fluid" alt=""></div>
               <div class="item"><img src="{{ asset('images/06.jpg') }}" class="img-fluid" alt=""></div>
           </div>
+        <a class="minagri" href="http://www.minagri.gob.pe" target="blank"><img src="{{ asset('images/minagri__logo.svg') }}" height="55px" alt="Minagri"></a>
       </header>
         <div class="container-fluid">
           <div class="row">

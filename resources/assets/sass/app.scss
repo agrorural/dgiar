@@ -203,13 +203,26 @@ header {
   h1 {
     position: absolute;
     left: 15px;
-    bottom: 20px;
+    bottom: 15px;
     color: #ffffff;
     z-index: 1;
+    width: 50%;
+    font-size: 28px;
+
+    small {
+      opacity: 0.65;
+      color: #ffffff;
+    }
   }
 
   .owl-carousel {
     z-index: 0;
+  }
+
+  .minagri {
+    position: absolute;
+    right: 15px;
+    bottom: 15px;
   }
 
   margin-bottom: 15px;

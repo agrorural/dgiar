@@ -462,15 +462,29 @@ capaDepartamentos.addListener('click', function(event) {
         card += '</div>';
 
         card += '<div class="card-body">';
+        
+        card += '<div class="row">';
+
+        card += '<div class="col-sm-6">';
 
         card += '<div class="media proj">';
         card += '<div class="media-left"><i class="fas fa-briefcase"></i></div>';
         card += '<div class="media-body">';
         card += '<h4 class="media-heading">' + proj + '</h4>';
         card += '<p>proyectos</p><br>';
-        card += '<p><strong>' + IR + '</strong> en infraestructura de riego<br />';
-        card += '<strong>' + IRR + '</strong> en irrigación<br />';
-        card += '<strong>' + RT + '</strong> en riego tecnificado</p>';
+        
+        if( IR > 0 ){
+          card += '<p><strong>' + IR + '</strong> en infraestructura de riego<br />';
+        }
+
+        if( IRR > 0 ){
+          card += '<strong>' + IRR + '</strong> en irrigación<br />';
+        }
+
+        if( RT > 0 ){
+          card += '<strong>' + RT + '</strong> en riego tecnificado</p>';
+        }
+
         card += '</div>';
         card += '</div>';
 
@@ -497,6 +511,20 @@ capaDepartamentos.addListener('click', function(event) {
         card += '<p>en expediente tecnicos</p>';
         card += '</div>';
         card += '</div>';
+
+        card += '</div>'; // .col-sm-6
+
+        // card += '<div class="col-sm-6">';
+        
+        // card += '<picture class="depImage">';
+        
+        // card += 'Imagen aqui';
+
+        // card += '</picture>'; // .depImage
+
+        // card += '</div>'; // .col-sm-6
+        
+        card += '</div>'; // .row
 
         card += '</div>';
         
