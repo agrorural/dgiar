@@ -51,7 +51,6 @@
             </footer>
             <script src="{{ mix('js/app.js') }}"></script>
             <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAxwYkZXk1iIQaP7W2VB8IKeRjtgpsGqS4"></script>
-            <script src="https://use.fontawesome.com/00e9311fd7.js"></script>
             <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
             <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
             <script src="https://cdn.datatables.net/responsive/2.2.0/js/dataTables.responsive.min.js"></script>

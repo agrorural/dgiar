@@ -15,5 +15,7 @@ mix.js('resources/assets/js/app.js', 'public/js')
    .js('resources/assets/js/map.js', 'public/js')
    .js('resources/assets/js/resumen.js', 'public/js')
    .js('resources/assets/js/carousel.js', 'public/js')
+   .js('resources/assets/js/Chart.bundle.js', 'public/js')
+   .js('resources/assets/js/owl.carousel.js', 'public/js')
    .js('resources/assets/js/fontawesome-all.js', 'public/js')
    .sass('resources/assets/sass/app.scss', 'public/css');
