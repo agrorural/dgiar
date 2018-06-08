@@ -21,7 +21,7 @@
     </head>
     <body id="resumen">
       <header>
-        <h1><small>Resumen Ejecutivo</small><br>Cartera de Proyectos de Inversión para Financimiento Fondo Sierra Azul</h1>
+        <h1><small>Resumen Ejecutivo</small><br>Cartera de Proyectos de Inversión para Financiamiento Fondo Sierra Azul</h1>
           <div class="owl-carousel owl-theme">
               <div class="item"><img src="{{ asset('images/01.jpg') }}" class="img-fluid" alt=""></div>
               <div class="item"><img src="{{ asset('images/02.jpg') }}" class="img-fluid" alt=""></div>
