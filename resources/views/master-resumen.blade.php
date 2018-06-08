@@ -21,7 +21,7 @@
     </head>
     <body id="resumen">
       <header>
-        <h1>Demandas de Intervención al Minagri (Resumen Ejecutivo)</h1>
+        <h1>Cartera de Proyectos de Invercion para Financimiento Fondo Sierra Azul<br><small>Ejecutivo)</small></h1>
           <div class="owl-carousel owl-theme">
               <div class="item"><img src="{{ asset('images/01.jpg') }}" class="img-fluid" alt=""></div>
               <div class="item"><img src="{{ asset('images/02.jpg') }}" class="img-fluid" alt=""></div>

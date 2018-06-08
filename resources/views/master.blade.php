@@ -15,12 +15,12 @@
         <!--Load the AJAX API-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"></script>
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/chartkick/2.3.0/chartkick.js"></script>
-        <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/all.js" integrity="sha384-xymdQtn1n3lH2wcu0qhcdaOpQwyoarkgLVxC/wZ5q7h9gHtxICrpcaSUfygqZGOe" crossorigin="anonymous"></script>
+        <script src="{{ mix('js/fontawesome-all.js') }}"></script>
         @yield('head')
     </head>
     <body>
       <header>
-        <h1>Demandas de Intervención al Minagri</h1>
+        <h1>Cartera de Proyectos de Invercion para Financimiento Fondo Sierra Azul</h1>
           <div class="owl-carousel owl-theme">
               <div class="item"><img src="{{ asset('images/01.jpg') }}" class="img-fluid" alt=""></div>
               <div class="item"><img src="{{ asset('images/02.jpg') }}" class="img-fluid" alt=""></div>
