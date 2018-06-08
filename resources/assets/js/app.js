@@ -21,6 +21,13 @@ const app = new Vue({
     el: '#app'
 });
 
+import fontawesome from '@fortawesome/fontawesome';
+import brands from '@fortawesome/fontawesome-free-brands';
+import solid from '@fortawesome/fontawesome-free-solid';
+import regular from '@fortawesome/fontawesome-free-regular';
+
+fontawesome.library.add(brands, solid, regular);
+
 $(function () {
   $('[data-toggle="tooltip"]').tooltip()
 });

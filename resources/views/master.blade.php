@@ -15,7 +15,6 @@
         <!--Load the AJAX API-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"></script>
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/chartkick/2.3.0/chartkick.js"></script>
-        <script src="{{ mix('js/fontawesome-all.js') }}"></script>
         @yield('head')
     </head>
     <body>
@@ -50,11 +49,11 @@
             </footer>
             <script src="{{ mix('js/app.js') }}"></script>
             <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAxwYkZXk1iIQaP7W2VB8IKeRjtgpsGqS4"></script>
-            <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+            {{-- <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
             <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
             <script src="https://cdn.datatables.net/responsive/2.2.0/js/dataTables.responsive.min.js"></script>
-            <script src="https://cdn.datatables.net/responsive/2.2.0/js/responsive.bootstrap4.min.js"></script>
-            <script src="https://cdn.datatables.net/plug-ins/1.10.16/api/sum().js"></script>
+            <script src="https://cdn.datatables.net/responsive/2.2.0/js/responsive.bootstrap4.min.js"></script> --}}
+            {{-- <script src="https://cdn.datatables.net/plug-ins/1.10.16/api/sum().js"></script> --}}
             <script src="{{ mix('js/map.js') }}"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
             <script src="{{ mix('js/carousel.js') }}"></script>

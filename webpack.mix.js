@@ -12,6 +12,7 @@ let mix = require('laravel-mix');
  */
 
 mix.js('resources/assets/js/app.js', 'public/js')
+mix.js('resources/assets/js/bundle.js', 'public/js')
    .js('resources/assets/js/map.js', 'public/js')
    .js('resources/assets/js/resumen.js', 'public/js')
    .js('resources/assets/js/carousel.js', 'public/js')
