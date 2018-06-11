@@ -280,11 +280,33 @@ function showDepartamentos(deno, tipo){
       
       getRegion();
 
+      $.ajax({
+        url: 'http://intranet.agrorural.gob.pe/WEBAPI_GEOVICE/api/geo/ProyectosPorDepartamento',
+        data: "{'ID_DEP':''}",
+        headers: { 
+        'Accept': 'application/json',
+        'Content-Type': 'application/json' 
+        },
+        contentType: "application/json;",
+        type: "post",
+        success: function (resultado) {
+          let types = [];
+          let proj;
+          
+          //console.log(resultado);      
+          
+          $.each(resultado, function (index, value) {
+            proj = value.iProyectos;
+            // console.log(proj);
+          });
+        }
+      });
+
       $(".chart__table").find("table thead").append(`
          <tr>
            <th>ID</th>
            <th>Departamento</th>
-           <th>Duración (m)</th>
+           <th>Proyectos</th>
            <th>Exp. Téc.</th>
            <th>Familias Benef.</th>
            <th>Hectáreas</th>
@@ -308,14 +330,14 @@ function showDepartamentos(deno, tipo){
         ]
       });
 
-      let meses = 0;
+      let projs = 0;
       let exp = 0;
       let fam = 0;
       let hect = 0;
 
       event.forEach(function(feature){
         
-        meses = meses + parseInt(feature.f.Nro_pdn);
+        projs = projs + parseInt(feature.f.iProyectos);
         exp = exp + parseInt(feature.f.Nro_pdnc);
         fam = fam + parseInt(feature.f.Inversion_pdnc);
         hect = hect + parseInt(feature.f.Nro_pdt);
@@ -323,7 +345,7 @@ function showDepartamentos(deno, tipo){
         t.row.add( [
           feature.f.ID_DEP, 
           feature.f.NOMBDEP, 
-          feature.f.Nro_pdn, 
+          feature.f.iProyectos, 
           'S/. ' + numberWithCommas(feature.f.Nro_pdnc), 
           numberWithCommas(feature.f.Inversion_pdnc), 
           numberWithCommas(feature.f.Nro_pdt) 
@@ -335,7 +357,7 @@ function showDepartamentos(deno, tipo){
       var trDOM = t.row.add( [
         '', 
         'TOTAL', 
-        meses, 
+        projs, 
         'S/ ' + numberWithCommas(exp), 
         fam, 
         hect
@@ -423,8 +445,8 @@ capaDepartamentos.addListener('click', function(event) {
     contentType: "application/json;",
     type: "post",
     success: function (resultado) {
-      let proj;
       let types = [];
+      let proj;
       
         //console.log(resultado);      
         
@@ -434,7 +456,7 @@ capaDepartamentos.addListener('click', function(event) {
           //console.log(proj);
         });
 
-        console.log(types);
+        //console.log(types);
 
 
           let allTypes = {};
@@ -445,7 +467,7 @@ capaDepartamentos.addListener('click', function(event) {
               ++allTypes[types[i]];
           }
 
-          console.log(allTypes["INFRAESTRUCTURA DE RIEGO"]);
+          //console.log(allTypes["INFRAESTRUCTURA DE RIEGO"]);
 
 
         let IR = ( allTypes["INFRAESTRUCTURA DE RIEGO"] != null ) ? allTypes["INFRAESTRUCTURA DE RIEGO"] : 0; 
@@ -542,38 +564,38 @@ capaDepartamentos.addListener('click', function(event) {
 
 });
 
-$(document).ready(function() {
-  $.ajax({
-    url: 'http://qa.agrorural.gob.pe/WebAPI_GeoAgro/api/geo/ListarDepartamentoscombo',
-    data: "{}",
-    headers: { 
-    'Accept': 'application/json',
-    'Content-Type': 'application/json' 
-    },
-    contentType: "application/json;",
-    type: "post",
-    success: function (resultado) {
-      //console.log(resultado);
-      $("#ddlDepartamento").empty();
-      $("#ddlDepartamento").append("<option value='00' disabled selected>Seleccione</option>");
-      $.each(resultado, function (index, value) {
-        if( value.ID_DEP === '01' || value.ID_DEP === '02' || value.ID_DEP === '03' || value.ID_DEP === '04' || value.ID_DEP === '05' || value.ID_DEP === '06' || value.ID_DEP === '08' || value.ID_DEP === '09' || value.ID_DEP === '10' || value.ID_DEP === '11' || value.ID_DEP === '12' || value.ID_DEP === '13' || value.ID_DEP === '14' || value.ID_DEP === '15' || value.ID_DEP === '18' || value.ID_DEP === '20' || value.ID_DEP === '21' || value.ID_DEP === '22' || value.ID_DEP === '23' ){
-          $("#ddlDepartamento").append("<option value=" + value.ID_DEP + ">" + value.NOM_DEP + "</option>");
-        }
-      });
-    },
-    error: function (xhr, status, error) {
+// $(document).ready(function() {
+//   $.ajax({
+//     url: 'http://qa.agrorural.gob.pe/WebAPI_GeoAgro/api/geo/ListarDepartamentoscombo',
+//     data: "{}",
+//     headers: { 
+//     'Accept': 'application/json',
+//     'Content-Type': 'application/json' 
+//     },
+//     contentType: "application/json;",
+//     type: "post",
+//     success: function (resultado) {
+//       //console.log(resultado);
+//       $("#ddlDepartamento").empty();
+//       $("#ddlDepartamento").append("<option value='00' disabled selected>Seleccione</option>");
+//       $.each(resultado, function (index, value) {
+//         if( value.ID_DEP === '01' || value.ID_DEP === '02' || value.ID_DEP === '03' || value.ID_DEP === '04' || value.ID_DEP === '05' || value.ID_DEP === '06' || value.ID_DEP === '08' || value.ID_DEP === '09' || value.ID_DEP === '10' || value.ID_DEP === '11' || value.ID_DEP === '12' || value.ID_DEP === '13' || value.ID_DEP === '14' || value.ID_DEP === '15' || value.ID_DEP === '18' || value.ID_DEP === '20' || value.ID_DEP === '21' || value.ID_DEP === '22' || value.ID_DEP === '23' ){
+//           $("#ddlDepartamento").append("<option value=" + value.ID_DEP + ">" + value.NOM_DEP + "</option>");
+//         }
+//       });
+//     },
+//     error: function (xhr, status, error) {
 
-    }
-  });
-});
+//     }
+//   });
+// });
 
 $(document).ajaxStop(function(){
   let chartHeight= $('.chart').height();
     
-  console.log($('#map').height());
+  //console.log($('#map').height());
 
   $('#map').height( chartHeight );
 
-  console.log($('#map').height());
+  //console.log($('#map').height());
 });

@@ -78,7 +78,7 @@ class GeoController extends Controller
 
         for ($x=0; $x < COUNT($object) ; $x++) {
 
-            echo '{"type":"Feature","properties":{"color":"' . $color[$conta] . '","NOMBDEP":"'.$object[$x]->NOM_DEP.'","ID_DEP":"'.$object[$x]->ID_DEP.'","Nro_pdn":"'.$object[$x]->Nro_pdn.'","Inversion_pdn":"'.$object[$x]->Inversion_pdn.'","Nro_pdnc":"'.$object[$x]->Nro_pdnc.'","Inversion_pdnc":"'.$object[$x]->Inversion_pdnc.'","Nro_pdt":"'.$object[$x]->Nro_pdt.'","Inversion_pdt":"'.$object[$x]->Inversion_pdt.'"},';
+            echo '{"type":"Feature","properties":{"color":"' . $color[$conta] . '","NOMBDEP":"'.$object[$x]->NOM_DEP.'","ID_DEP":"'.$object[$x]->ID_DEP.'","Nro_pdn":"'.$object[$x]->Nro_pdn.'","Inversion_pdn":"'.$object[$x]->Inversion_pdn.'","Nro_pdnc":"'.$object[$x]->Nro_pdnc.'","Inversion_pdnc":"'.$object[$x]->Inversion_pdnc.'","Nro_pdt":"'.$object[$x]->Nro_pdt.'","Inversion_pdt":"'.$object[$x]->Inversion_pdt.'","iProyectos":"'.$object[$x]->iProyectos.'"},';
             echo $object[$x]->JSON;
             echo '}';
             if($x <> (COUNT($object)-1)){
