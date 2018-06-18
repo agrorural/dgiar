@@ -634,7 +634,7 @@ function showCP(id, deno, tipo){
     <th>Proyecto</th>
     <th>Presupuesto</th>
     <th>Tipología</th>
-    <th>Organización</th>
+    <th>Unid. Ejecutora</th>
     <th>Ind. Formulad.</th>
     </tr>
     `);
