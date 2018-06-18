@@ -23,6 +23,10 @@ Route::get('/sierra-azul', function () {
   return view('sierra-azul');
 });
 
+Route::get('/sierra-azul-resumen', function () {
+  return view('sierra-azul-resumen');
+});
+
 Route::get('/departamentos/{carga}', ['uses' => 'GeoController@getDepartamentos']);
 
 Route::get('/provincias/{carga}', ['uses' => 'GeoController@getProvincias']);
