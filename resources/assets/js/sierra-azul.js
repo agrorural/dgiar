@@ -350,7 +350,6 @@ function showProvincias(id, deno, tipo){
          <tr>
            <th>ID</th>
            <th>Provincia</th>
-           <th>Duración (m)</th>
            <th>Exp. Téc.</th>
            <th>Familias Benef.</th>
            <th>Hectáreas</th>
@@ -369,8 +368,8 @@ function showProvincias(id, deno, tipo){
             "targets": 0,
             "visible": false
           },
-          { className: "dt-body-right text-right", "targets": [ 2, 3, 4, 5 ] },
-          { "width": "10%", "targets": [2, 4, 5] }
+          { className: "dt-body-right text-right", "targets": [ 2, 3, 4 ] },
+          // { "width": "10%", "targets": [2, 4, 5] }
         ]
       });
 
@@ -389,7 +388,6 @@ function showProvincias(id, deno, tipo){
         tblProv.row.add( [
           feature.f.ID_PROV, 
           feature.f.NOM_PROV, 
-          feature.f.Nro_pdn, 
           'S/. ' + numberWithCommas(feature.f.Nro_pdnc), 
           numberWithCommas(feature.f.Inversion_pdnc), 
           numberWithCommas(feature.f.Nro_pdt) 
@@ -401,7 +399,6 @@ function showProvincias(id, deno, tipo){
       var tblProvtrDOM = tblProv.row.add( [
         '', 
         'TOTAL', 
-        tblProvmeses, 
         'S/ ' + numberWithCommas(tblProvexp), 
         tblProvfam, 
         tblProvhect
@@ -491,7 +488,6 @@ function showDistritos(id, deno, tipo){
         <tr>
           <th>ID</th>
           <th>Distrito</th>
-          <th>Duración (m)</th>
           <th>Exp. Téc.</th>
           <th>Familias Benef.</th>
           <th>Hectáreas</th>
@@ -510,8 +506,8 @@ function showDistritos(id, deno, tipo){
             "targets": 0,
             "visible": false
           },
-          { className: "dt-body-right text-right", "targets": [ 2, 3, 4, 5 ] },
-          { "width": "10%", "targets": [2, 4, 5] }
+          { className: "dt-body-right text-right", "targets": [ 2, 3, 4] },
+          // { "width": "10%", "targets": [2, 4, 5] }
         ]
       });
 
@@ -530,7 +526,6 @@ function showDistritos(id, deno, tipo){
         tblDis.row.add( [
           feature.f.ID_DIS, 
           feature.f.NOM_DIS, 
-          feature.f.Nro_pdn, 
           'S/. ' + numberWithCommas(feature.f.Nro_pdnc), 
           numberWithCommas(feature.f.Inversion_pdnc), 
           numberWithCommas(feature.f.Nro_pdt) 
@@ -542,7 +537,6 @@ function showDistritos(id, deno, tipo){
       var tblDistrDOM = tblDis.row.add( [
         '', 
         'TOTAL', 
-        tblDismeses, 
         'S/ ' + numberWithCommas(tblDisexp), 
         tblDisfam, 
         tblDishect
