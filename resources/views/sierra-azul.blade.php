@@ -1,11 +1,11 @@
 @extends ('master')
 @section('head')
-    <title>Resumen</title>
+    <title>Resumen Sierra Azul</title>
 @stop
 
-@section('body_class', 'resumen')
+@section('body_class', 'sierraAzul')
 @section('subpage', 'Resumen Ejecutivo')
-@section('page', 'Cartera de Proyectos de Inversión para Financiamiento - Obras por impuestos')
+@section('page', 'Proyectos Aprobados - Fondo Sierra Azul')
 
 
 @section('content')
@@ -32,7 +32,7 @@
 @stop
 @section('footer')
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAxwYkZXk1iIQaP7W2VB8IKeRjtgpsGqS4"></script>
-<script src="{{ mix('js/resumen.js') }}"></script>
+<script src="{{ mix('js/sierra-azul.js') }}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
 <script src="{{ mix('js/carousel.js') }}"></script>
 @stop

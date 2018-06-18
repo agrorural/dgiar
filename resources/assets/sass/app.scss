@@ -149,6 +149,13 @@ h6 {
 	}
 }
 
+.sierraAzul {
+  .chart__image {
+    height: 0;
+    display: none;
+  }
+}
+
 #map_chart {
   position: relative;
   background-color: white;

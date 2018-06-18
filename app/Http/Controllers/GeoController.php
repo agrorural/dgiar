@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 class GeoController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -21,8 +22,12 @@ class GeoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function getDepartamentos()
+    public function getDepartamentos($carga)
     {
+        //$data['carga'] = $carga;
+        //var_dump($data);
+
+
         if (isset($_SERVER['HTTP_ORIGIN'])) {  
             header("Access-Control-Allow-Origin: {$_SERVER['HTTP_ORIGIN']}");  
             header('Access-Control-Allow-Credentials: true');  
@@ -58,7 +63,7 @@ class GeoController extends Controller
         curl_setopt($ch, CURLOPT_URL,            $url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1 );
         curl_setopt($ch, CURLOPT_POST,           1 );
-        curl_setopt($ch, CURLOPT_POSTFIELDS,     "{ID_DEP:'".$ids."',vDenominacion:'".$deno."',vTipo:'".$tipo."'}"); 
+        curl_setopt($ch, CURLOPT_POSTFIELDS,     "{ID_DEP:'".$ids."',vDenominacion:'".$deno."',vTipo:'".$tipo."',vTipo:'".$tipo."',carga:'".$carga."'}"); 
         curl_setopt($ch, CURLOPT_HTTPHEADER,     array('Content-Type: application/json')); 
 
         $result=curl_exec ($ch);
@@ -108,8 +113,10 @@ class GeoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function getProvincias()
+    public function getProvincias($carga)
     {
+      //$data['carga'] = $carga;
+
         if (isset($_SERVER['HTTP_ORIGIN'])) {  
             header("Access-Control-Allow-Origin: {$_SERVER['HTTP_ORIGIN']}");  
             header('Access-Control-Allow-Credentials: true');  
@@ -150,7 +157,7 @@ class GeoController extends Controller
         curl_setopt($ch, CURLOPT_URL,            $url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1 );
         curl_setopt($ch, CURLOPT_POST,           1 );
-        curl_setopt($ch, CURLOPT_POSTFIELDS,     "{ID_DEP:'".$Departamentos_ids."',ID_PROV:'".$Provincias_ids."',vDenominacion:'".$deno."',vTipo:'".$tipo."'}"); 
+        curl_setopt($ch, CURLOPT_POSTFIELDS,     "{ID_DEP:'".$Departamentos_ids."',ID_PROV:'".$Provincias_ids."',vDenominacion:'".$deno."',carga:'".$carga."'}"); 
         curl_setopt($ch, CURLOPT_HTTPHEADER,     array('Content-Type: application/json')); 
 
         $result=curl_exec ($ch);
@@ -197,8 +204,10 @@ class GeoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function getDistritos()
+    public function getDistritos($carga)
     {
+      //$data['carga'] = $carga;
+
         ini_set('memory_limit', '-1');
 
         if (isset($_SERVER['HTTP_ORIGIN'])) {  
@@ -245,7 +254,7 @@ class GeoController extends Controller
         curl_setopt($ch, CURLOPT_URL,            $url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1 );
         curl_setopt($ch, CURLOPT_POST,           1 );
-        curl_setopt($ch, CURLOPT_POSTFIELDS,     "{ID_DEP:'".$Departamentos_ids."',ID_PROV:'".$Provincias_ids."',ID_DIS:'".$Distritos_ids."',vDenominacion:'".$deno."',vTipo:'".$tipo."'}"); 
+        curl_setopt($ch, CURLOPT_POSTFIELDS,     "{ID_DEP:'".$Departamentos_ids."',ID_PROV:'".$Provincias_ids."',ID_DIS:'".$Distritos_ids."',vDenominacion:'".$deno."',vTipo:'".$tipo."',carga:'".$carga."'}"); 
         curl_setopt($ch, CURLOPT_HTTPHEADER,     array('Content-Type: application/json')); 
 
         $result=curl_exec ($ch);
@@ -292,8 +301,9 @@ class GeoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function getCP()
+    public function getCP($carga)
     {
+      //$data['carga'] = $carga;
         ini_set('memory_limit', '-1');
         header('Content-Type: application/json');
 
@@ -346,7 +356,7 @@ class GeoController extends Controller
         curl_setopt($ch, CURLOPT_URL,            $url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1 );
         curl_setopt($ch, CURLOPT_POST,           1 );
-        curl_setopt($ch, CURLOPT_POSTFIELDS,     "{ID_DEP:'".$Departamentos_ids."',ID_PROV:'".$Provincias_ids."',ID_DIS:'".$Distritos_ids."',iCodCCPP:'".$CCPP_ids."',vDenominacion:'".$deno."',vTipo:'".$tipo."'}"); 
+        curl_setopt($ch, CURLOPT_POSTFIELDS,     "{ID_DEP:'".$Departamentos_ids."',ID_PROV:'".$Provincias_ids."',ID_DIS:'".$Distritos_ids."',iCodCCPP:'".$CCPP_ids."',vDenominacion:'".$deno."',vTipo:'".$tipo."',carga:'".$carga."'}"); 
         curl_setopt($ch, CURLOPT_HTTPHEADER,     array('Content-Type: application/json')); 
 
         $result=curl_exec ($ch);

@@ -19,14 +19,14 @@ Route::get('/resumen', function () {
   return view('resumen');
 });
 
-Route::get('/bundle', function () {
-  return view('bundle');
+Route::get('/sierra-azul', function () {
+  return view('sierra-azul');
 });
 
-Route::get('/departamentos', 'GeoController@getDepartamentos');
+Route::get('/departamentos/{carga}', ['uses' => 'GeoController@getDepartamentos']);
 
-Route::get('/provincias', 'GeoController@getProvincias');
+Route::get('/provincias/{carga}', ['uses' => 'GeoController@getProvincias']);
 
-Route::get('/distritos', 'GeoController@getDistritos');
+Route::get('/distritos/{carga}', ['uses' => 'GeoController@getDistritos']);
 
-Route::get('/cp', 'GeoController@getCP');
+Route::get('/cp/{carga}', ['uses' => 'GeoController@getCP']);

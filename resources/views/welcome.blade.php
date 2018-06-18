@@ -2,6 +2,9 @@
 @section('head')
     <title>DGIAR</title>
 @stop
+
+@section('page', 'Cartera de Proyectos de Inversión para Financiamiento - Obras por impuestos')
+
 @section('content')
     <div id="app">
         <div class="app-container">
@@ -70,4 +73,8 @@
     </div>
 @stop
 @section('footer')
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAxwYkZXk1iIQaP7W2VB8IKeRjtgpsGqS4"></script>
+<script src="{{ mix('js/map.js') }}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+<script src="{{ mix('js/carousel.js') }}"></script>
 @stop

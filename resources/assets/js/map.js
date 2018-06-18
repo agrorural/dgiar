@@ -199,7 +199,7 @@ function showDepartamentos(deno, tipo){
 
   removeAllFeatures();
  
-  capaDepartamentos.loadGeoJson('/departamentos?deps=' + dgiarDepID + '&provs=&deno=' + deno + '&tipo=' + tipo, null, function(event){
+  capaDepartamentos.loadGeoJson('/departamentos/1?deps=' + dgiarDepID + '&provs=&deno=' + deno + '&tipo=' + tipo, null, function(event){
     $(".chart__table").html(`
       <div class="chart__table-container">
       <table id="tblDep" class="dt-responsive" cellspacing="0" width="100%">
@@ -324,7 +324,7 @@ function showProvincias(id, deno, tipo){
 
   removeAllFeatures();
 
-  capaProvincias.loadGeoJson('/provincias?deps=' + id + '&provs=&deno=' + deno + '&tipo=' + tipo, null, function(event){
+  capaProvincias.loadGeoJson('/provincias/1?deps=' + id + '&provs=&deno=' + deno + '&tipo=' + tipo, null, function(event){
     $(".chart__table").html(`
       <div class="chart__table-container">
       <table id="tblProv" class="dt-responsive" cellspacing="0" width="100%">
@@ -463,7 +463,7 @@ function showDistritos(id, deno, tipo){
     }
   });
 
-  capaDistritos.loadGeoJson('/distritos?deps=&provs=' + provID + '&dis=&deno=' + deno + '&tipo=' + tipo, null, function(event){    
+  capaDistritos.loadGeoJson('/distritos/1?deps=&provs=' + provID + '&dis=&deno=' + deno + '&tipo=' + tipo, null, function(event){    
     //console.log(event);
     $(".chart__table").html(`
       <div class="chart__table-container">
@@ -605,7 +605,7 @@ function showCP(id, deno, tipo){
     }
   });
 
-  capaCP.loadGeoJson('/cp?deps=&provs=&dis=' + disID + '&ccpps=&deno=' + deno + '&tipo=' + tipo, null, function(event){    
+  capaCP.loadGeoJson('/cp/1?deps=&provs=&dis=' + disID + '&ccpps=&deno=' + deno + '&tipo=' + tipo, null, function(event){    
     //console.log(event);
     $(".chart__table").html(`
       <div class="chart__table-container">
@@ -768,7 +768,7 @@ capaDepartamentos.addListener('click', function(event) {
 
   // event.feature.setProperty('isColorful', true);
   // event.feature.setProperty('color', 'white');
-  // capaProvincias.loadGeoJson('/provincias?deps=' + depID + '&provs=');
+  // capaProvincias.loadGeoJson('/provincias/1?deps=' + depID + '&provs=');
   // capaProvincias.setMap(map);
   // let bounds = new google.maps.LatLngBounds();
   // processPoints(event.feature.getGeometry(), bounds.extend, bounds);
@@ -909,8 +909,8 @@ function getRegion() {
   `);
 
   $.ajax({
-    url: 'http://qa.agrorural.gob.pe/WEBAPI_GEOVICE/api/geo/ReportePorRegion',
-    data: "{}",
+    url: 'http://intranet.agrorural.gob.pe/WEBAPI_GEOVICE/api/geo/ReportePorRegion',
+    data: "{'carga': 1}",
     headers: { 
     'Accept': 'application/json',
     'Content-Type': 'application/json' 

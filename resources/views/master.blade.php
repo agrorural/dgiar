@@ -12,14 +12,15 @@
         <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.green.min.css" />
+        <script src="{{ mix('js/fontawesome-all.js') }}"></script>
         <!--Load the AJAX API-->
+        @yield('head')
         <script src="{{ mix('js/Chart.bundle.js') }}"></script>
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/chartkick/2.3.0/chartkick.js"></script>
-        @yield('head')
     </head>
-    <body>
+    <body class="@yield('body_class')">
       <header>
-        <h1>Cartera de Proyectos de Inversión para Financiamiento Fondo Sierra Azul</h1>
+        <h1><small>@yield('subpage')</small><br />@yield('page')</h1>
           <div class="owl-carousel owl-theme">
               <div class="item"><img src="{{ asset('images/01.jpg') }}" class="img-fluid" alt=""></div>
               <div class="item"><img src="{{ asset('images/02.jpg') }}" class="img-fluid" alt=""></div>
@@ -38,7 +39,7 @@
           </div>
         </div>
 
-        @yield('footer')
+       
           <footer class="">
               <div class="container-fluid">
                   <nav class="nav">
@@ -48,14 +49,7 @@
               </div>
             </footer>
             <script src="{{ mix('js/app.js') }}"></script>
-            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAxwYkZXk1iIQaP7W2VB8IKeRjtgpsGqS4"></script>
-            {{-- <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-            <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
-            <script src="https://cdn.datatables.net/responsive/2.2.0/js/dataTables.responsive.min.js"></script>
-            <script src="https://cdn.datatables.net/responsive/2.2.0/js/responsive.bootstrap4.min.js"></script> --}}
-            {{-- <script src="https://cdn.datatables.net/plug-ins/1.10.16/api/sum().js"></script> --}}
-            <script src="{{ mix('js/map.js') }}"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
-            <script src="{{ mix('js/carousel.js') }}"></script>
+            
+            @yield('footer')
     </body>
 </html>

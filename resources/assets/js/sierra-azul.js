@@ -55,7 +55,7 @@ function getRegion() {
 
   $.ajax({
     url: 'http://intranet.agrorural.gob.pe/WEBAPI_GEOVICE/api/geo/ReportePorRegion',
-    data: "{'carga': 1}",
+    data: "{'carga': 2}",
     headers: { 
     'Accept': 'application/json',
     'Content-Type': 'application/json' 
@@ -72,6 +72,8 @@ function getRegion() {
           chartLabels.push([value.Region_Natural]);
           //chartData.push([value.MONTO_EXPEDIENTE_TECNICO]);
         });
+
+        console.log(chartLabels);
 
         //new Chartkick.PieChart("chartDep", chartData, {donut: true, prefix: "S/ ", legend: "bottom"})
         //new Chartkick.PieChart("chartDep", [["Costa", 74585758.7], ["Sierra", 563387425.37]], {donut: true, prefix: "S/ ", legend: "bottom"})
@@ -274,7 +276,7 @@ function showDepartamentos(deno, tipo){
 
   removeAllFeatures();
  
-  capaDepartamentos.loadGeoJson('/departamentos/1?deps=' + dgiarDepID + '&provs=&deno=' + deno + '&tipo=' + tipo, null, function(event){
+  capaDepartamentos.loadGeoJson('/departamentos/2?deps=' + dgiarDepID + '&provs=&deno=' + deno + '&tipo=' + tipo, null, function(event){
     $(".chart__table").html(`
       <div class="chart__table-container">
       <table id="tblDep" class="dt-responsive" cellspacing="0" width="100%">
@@ -293,7 +295,7 @@ function showDepartamentos(deno, tipo){
 
       $.ajax({
         url: 'http://intranet.agrorural.gob.pe/WEBAPI_GEOVICE/api/geo/ProyectosPorDepartamento',
-        data: "{'ID_DEP':'','carga': 1}",
+        data: "{'ID_DEP':'','carga': 2}",
         headers: { 
         'Accept': 'application/json',
         'Content-Type': 'application/json' 
@@ -436,7 +438,7 @@ capaDepartamentos.addListener('click', function(event) {
   // event.feature.setProperty('isColorful', true);
 /*   event.feature.setProperty('color', 'white');
   capaDepartamentos.revertStyle(); */
-  // capaProvincias.loadGeoJson('/provincias/1?deps=' + depID + '&provs=');
+  // capaProvincias.loadGeoJson('/provincias/2?deps=' + depID + '&provs=');
   // capaProvincias.setMap(map);
   // let bounds = new google.maps.LatLngBounds();
   // processPoints(event.feature.getGeometry(), bounds.extend, bounds);
@@ -448,7 +450,7 @@ capaDepartamentos.addListener('click', function(event) {
 
   $.ajax({
     url: 'http://intranet.agrorural.gob.pe/WEBAPI_GEOVICE/api/geo/ProyectosPorDepartamento',
-    data: "{'ID_DEP':'" + depID + "', 'carga': 1}",
+    data: "{'ID_DEP':'" + depID + "', 'carga': 2}",
     headers: { 
     'Accept': 'application/json',
     'Content-Type': 'application/json' 
@@ -562,8 +564,8 @@ capaDepartamentos.addListener('click', function(event) {
         card += '</div>';
         
         card += '<div class="card-footer">';
-        card += '<a id="general" href="/resumen" class="btn btn-link"><i class="fas fa-arrow-left"></i> Volver</a>';
-        card += '<a id="full" href="/" class="btn btn-link" target="_blank">Reporte Completo</a>';
+        card += '<a id="general" href="/sierra-azul" class="btn btn-link"><i class="fas fa-arrow-left"></i> Volver</a>';
+        //card += '<a id="full" href="/sierra-azul" class="btn btn-link" target="_blank">Reporte Completo</a>';
         card += '</div>';
 
         card += '</div>';
