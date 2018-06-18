@@ -533,7 +533,7 @@ capaDepartamentos.addListener('click', function(event) {
         card += '<div class="media-left"><i class="fas fa-map"></i></div>';
         card += '<div class="media-body">';
         card += '<h4 class="media-heading">' + hect + '</h4>';
-        card += '<p>hectareas</p>';
+        card += '<p>hectáreas</p>';
         card += '</div>';
         card += '</div>';
         
@@ -541,7 +541,7 @@ capaDepartamentos.addListener('click', function(event) {
         card += '<div class="media-left"><i class="fas fa-money-bill-alt"></i></div>';
         card += '<div class="media-body">';
         card += '<h4 class="media-heading">S/ ' + exp + '</h4>';
-        card += '<p>en expediente tecnicos</p>';
+        card += '<p>en expedientes técnicos</p>';
         card += '</div>';
         card += '</div>';
 

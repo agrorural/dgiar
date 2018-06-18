@@ -63,7 +63,7 @@ function getRegion() {
     contentType: "application/json;",
     type: "post",
     success: function (resultado) {
-      //console.log(resultado);
+      console.log(resultado);
 
         //let chartData = [];
         let chartLabels = [];
@@ -73,7 +73,7 @@ function getRegion() {
           //chartData.push([value.MONTO_EXPEDIENTE_TECNICO]);
         });
 
-        console.log(chartLabels);
+        //console.log(chartLabels);
 
         //new Chartkick.PieChart("chartDep", chartData, {donut: true, prefix: "S/ ", legend: "bottom"})
         //new Chartkick.PieChart("chartDep", [["Costa", 74585758.7], ["Sierra", 563387425.37]], {donut: true, prefix: "S/ ", legend: "bottom"})
@@ -86,7 +86,7 @@ function getRegion() {
             labels: chartLabels,
             datasets: [{
               label: 'Gráfica',
-              data: [74585758, 563387425, 79308772],
+              data: [37323875, 165342315, 43703749],
               //data: chartData,
               backgroundColor: 'rgba(215, 58, 36, 0.2)',
               borderColor: 'rgba(215, 58, 36, 1)',
@@ -498,9 +498,9 @@ capaDepartamentos.addListener('click', function(event) {
 
         card += '<div class="card-body">';
         
-        card += '<div class="row">';
+        //card += '<div class="row">';
 
-        card += '<div class="col-sm-6">';
+        //card += '<div class="col-sm-6">';
 
         card += '<div class="media proj">';
         card += '<div class="media-left"><i class="fas fa-briefcase"></i></div>';
@@ -535,7 +535,7 @@ capaDepartamentos.addListener('click', function(event) {
         card += '<div class="media-left"><i class="fas fa-map"></i></div>';
         card += '<div class="media-body">';
         card += '<h4 class="media-heading">' + hect + '</h4>';
-        card += '<p>hectareas</p>';
+        card += '<p>hectáreas</p>';
         card += '</div>';
         card += '</div>';
         
@@ -543,11 +543,11 @@ capaDepartamentos.addListener('click', function(event) {
         card += '<div class="media-left"><i class="fas fa-money-bill-alt"></i></div>';
         card += '<div class="media-body">';
         card += '<h4 class="media-heading">S/ ' + exp + '</h4>';
-        card += '<p>en expediente tecnicos</p>';
+        card += '<p>en expedientes técnicos</p>';
         card += '</div>';
         card += '</div>';
 
-        card += '</div>'; // .col-sm-6
+        //card += '</div>'; // .col-sm-6
 
         // card += '<div class="col-sm-6">';
         
@@ -559,7 +559,7 @@ capaDepartamentos.addListener('click', function(event) {
 
         // card += '</div>'; // .col-sm-6
         
-        card += '</div>'; // .row
+        //card += '</div>'; // .row
 
         card += '</div>';
         
