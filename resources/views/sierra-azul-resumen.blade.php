@@ -5,7 +5,7 @@
 
 @section('body_class', 'sierraAzul')
 @section('subpage', 'Resumen Ejecutivo')
-@section('page', 'Proyectos Aprobados - Fondo Sierra Azul')
+@section('page', 'Proyectos Aprobados - Fondo Sierra Azul - 2018')
 
 
 @section('content')
