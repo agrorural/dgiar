@@ -408,7 +408,7 @@ function showProvincias(id, deno, tipo){
 
       new Chartkick.ColumnChart("chartProv", chartMultiData, {legend: "bottom"});
 
-      equalHeight();
+      //equalHeight();
     });
 
   });
@@ -546,7 +546,7 @@ function showDistritos(id, deno, tipo){
 
       new Chartkick.ColumnChart("chartDis", chartMultiData, {legend: "bottom"});
 
-      equalHeight();
+      //equalHeight();
     });
 
     //console.log(tableData);
@@ -681,7 +681,7 @@ function showCP(id, deno, tipo){
 
       } );
 
-      equalHeight();
+      //equalHeight();
 
     });
 
