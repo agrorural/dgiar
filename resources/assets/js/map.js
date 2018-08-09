@@ -198,8 +198,10 @@ function showDepartamentos(deno, tipo){
   });
 
   removeAllFeatures();
+
+  console.log("Hola");
  
-  capaDepartamentos.loadGeoJson('/departamentos/1?deps=' + dgiarDepID + '&provs=&deno=' + deno + '&tipo=' + tipo, null, function(event){
+  capaDepartamentos.loadGeoJson('departamentos/1?deps=' + dgiarDepID + '&provs=&deno=' + deno + '&tipo=' + tipo, null, function(event){
     $(".chart__table").html(`
       <div class="chart__table-container">
       <table id="tblDep" class="dt-responsive" cellspacing="0" width="100%">
