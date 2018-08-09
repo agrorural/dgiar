@@ -6,16 +6,16 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <!-- Styles -->
-        <link href="{{ mix('css/app.css') }}" rel="stylesheet" type="text/css">
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet" type="text/css">
         <link href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css">
         <link href="https://cdn.datatables.net/responsive/2.2.0/css/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css">
         <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.green.min.css" />
-        <script src="{{ mix('js/fontawesome-all.js') }}"></script>
+        <script src="{{ asset('js/fontawesome-all.js') }}"></script>
         <!--Load the AJAX API-->
         @yield('head')
-        <script src="{{ mix('js/Chart.bundle.js') }}"></script>
+        <script src="{{ asset('js/Chart.bundle.js') }}"></script>
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/chartkick/2.3.0/chartkick.js"></script>
         
     </head>
@@ -49,10 +49,10 @@
                   </nav>
               </div>
             </footer>
-            <script src="{{ mix('js/app.js') }}"></script>
+            <script src="{{ asset('js/app.js') }}"></script>
             <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAxwYkZXk1iIQaP7W2VB8IKeRjtgpsGqS4"></script>
-            <script src="{{ mix('js/resumen.js') }}"></script>
+            <script src="{{ asset('js/resumen.js') }}"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
-            <script src="{{ mix('js/carousel.js') }}"></script>
+            <script src="{{ asset('js/carousel.js') }}"></script>
     </body>
 </html>
