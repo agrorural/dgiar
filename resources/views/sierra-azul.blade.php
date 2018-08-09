@@ -50,7 +50,7 @@
                   </div>
                   <div class="form-group text-right">
                     <label>&nbsp;</label>
-                      <a href="/sierra-azul-resumen" id="resumen" class="btn btn-danger btn-sm"><i class="fas fa-briefcase" aria-hidden="true"></i> Resumen Ejecutivo</a>
+                      <a href="sierra-azul-resumen" id="resumen" class="btn btn-danger btn-sm"><i class="fas fa-briefcase" aria-hidden="true"></i> Resumen Ejecutivo</a>
                   </div>
                 </form>
             </div>
