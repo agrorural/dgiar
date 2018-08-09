@@ -274,7 +274,7 @@ function showDepartamentos(deno, tipo){
 
   removeAllFeatures();
  
-  capaDepartamentos.loadGeoJson('/departamentos/1?deps=' + dgiarDepID + '&provs=&deno=' + deno + '&tipo=' + tipo, null, function(event){
+  capaDepartamentos.loadGeoJson('departamentos/1?deps=' + dgiarDepID + '&provs=&deno=' + deno + '&tipo=' + tipo, null, function(event){
     $(".chart__table").html(`
       <div class="chart__table-container">
       <table id="tblDep" class="dt-responsive" cellspacing="0" width="100%">
@@ -562,8 +562,8 @@ capaDepartamentos.addListener('click', function(event) {
         card += '</div>';
         
         card += '<div class="card-footer">';
-        card += '<a id="general" href="/resumen" class="btn btn-link"><i class="fas fa-arrow-left"></i> Volver</a>';
-        card += '<a id="full" href="/" class="btn btn-link" target="_blank">Reporte Completo</a>';
+        card += '<a id="general" href="resumen" class="btn btn-link"><i class="fas fa-arrow-left"></i> Volver</a>';
+        card += '<a id="full" href="/dgiar" class="btn btn-link" target="_blank">Reporte Completo</a>';
         card += '</div>';
 
         card += '</div>';

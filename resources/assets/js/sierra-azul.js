@@ -199,7 +199,7 @@ function showDepartamentos(deno, tipo){
 
   removeAllFeatures();
  
-  capaDepartamentos.loadGeoJson('/departamentos/2?deps=' + dgiarDepID + '&provs=&deno=' + deno + '&tipo=' + tipo, null, function(event){
+  capaDepartamentos.loadGeoJson('departamentos/2?deps=' + dgiarDepID + '&provs=&deno=' + deno + '&tipo=' + tipo, null, function(event){
     $(".chart__table").html(`
       <div class="chart__table-container">
       <table id="tblDep" class="dt-responsive" cellspacing="0" width="100%">
@@ -321,7 +321,7 @@ function showProvincias(id, deno, tipo){
 
   removeAllFeatures();
 
-  capaProvincias.loadGeoJson('/provincias/2?deps=' + id + '&provs=&deno=' + deno + '&tipo=' + tipo, null, function(event){
+  capaProvincias.loadGeoJson('provincias/2?deps=' + id + '&provs=&deno=' + deno + '&tipo=' + tipo, null, function(event){
     $(".chart__table").html(`
       <div class="chart__table-container">
       <table id="tblProv" class="dt-responsive" cellspacing="0" width="100%">
@@ -457,7 +457,7 @@ function showDistritos(id, deno, tipo){
     }
   });
 
-  capaDistritos.loadGeoJson('/distritos/2?deps=&provs=' + provID + '&dis=&deno=' + deno + '&tipo=' + tipo, null, function(event){    
+  capaDistritos.loadGeoJson('distritos/2?deps=&provs=' + provID + '&dis=&deno=' + deno + '&tipo=' + tipo, null, function(event){    
     //console.log(event);
     $(".chart__table").html(`
       <div class="chart__table-container">
@@ -596,7 +596,7 @@ function showCP(id, deno, tipo){
     }
   });
 
-  capaCP.loadGeoJson('/cp/2?deps=&provs=&dis=' + disID + '&ccpps=&deno=' + deno + '&tipo=' + tipo, null, function(event){    
+  capaCP.loadGeoJson('cp/2?deps=&provs=&dis=' + disID + '&ccpps=&deno=' + deno + '&tipo=' + tipo, null, function(event){    
     //console.log(event);
     $(".chart__table").html(`
       <div class="chart__table-container">
