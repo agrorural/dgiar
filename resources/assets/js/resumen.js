@@ -563,7 +563,7 @@ capaDepartamentos.addListener('click', function(event) {
         
         card += '<div class="card-footer">';
         card += '<a id="general" href="resumen" class="btn btn-link"><i class="fas fa-arrow-left"></i> Volver</a>';
-        card += '<a id="full" href="/dgiar" class="btn btn-link" target="_blank">Reporte Completo</a>';
+        card += '<a id="full" href="/" class="btn btn-link" target="_blank">Reporte Completo</a>';
         card += '</div>';
 
         card += '</div>';
