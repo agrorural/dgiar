@@ -44,7 +44,7 @@
                   </div>
                   <div class="form-group">
                     <label>&nbsp;</label>
-                      <button id="btnLimpiar" type="button" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> Limpiar</button>
+                      <button id="btnLimpiar" type="button" class="btn btn-primary btn-sm"><span class="fas fa-sync-alt" aria-hidden="true"></span> Limpiar</button>
                   </div>
                   <div class="form-group text-right">
                     <label>&nbsp;</label>
