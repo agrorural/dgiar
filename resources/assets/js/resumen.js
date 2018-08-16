@@ -54,7 +54,7 @@ function getRegion() {
   `).css('margin-top', '15px');
 
   $.ajax({
-    url: 'http://intranet.agrorural.gob.pe/WEBAPI_GEOVICE/api/geo/ReportePorRegion',
+    url: 'https://intranet.agrorural.gob.pe/WEBAPI_GEOVICE/api/geo/ReportePorRegion',
     data: "{'carga': 1}",
     headers: { 
     'Accept': 'application/json',
@@ -292,7 +292,7 @@ function showDepartamentos(deno, tipo){
       getRegion();
 
       $.ajax({
-        url: 'http://intranet.agrorural.gob.pe/WEBAPI_GEOVICE/api/geo/ProyectosPorDepartamento',
+        url: 'https://intranet.agrorural.gob.pe/WEBAPI_GEOVICE/api/geo/ProyectosPorDepartamento',
         data: "{'ID_DEP':'','carga': 1}",
         headers: { 
         'Accept': 'application/json',
