@@ -63,14 +63,14 @@ function getRegion() {
     contentType: "application/json;",
     type: "post",
     success: function (resultado) {
-      //console.log(resultado);
+      console.log(resultado);
 
-        //let chartData = [];
+        let chartData = [];
         let chartLabels = [];
         
         $.each(resultado, function (index, value) {
           chartLabels.push([value.Region_Natural]);
-          //chartData.push([value.MONTO_EXPEDIENTE_TECNICO]);
+          chartData.push([value.MONTO_EXPEDIENTE_TECNICO]);
         });
 
         //new Chartkick.PieChart("chartDep", chartData, {donut: true, prefix: "S/ ", legend: "bottom"})
@@ -84,8 +84,8 @@ function getRegion() {
             labels: chartLabels,
             datasets: [{
               label: 'Gráfica',
-              data: [74585758, 563387425, 79308772],
-              //data: chartData,
+              //data: [74585758, 563387425, 79308772],
+              data: chartData,
               backgroundColor: 'rgba(215, 58, 36, 0.2)',
               borderColor: 'rgba(215, 58, 36, 1)',
               borderWidth: 2

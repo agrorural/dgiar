@@ -799,7 +799,7 @@ capaDistritos.addListener('click', function(event) {
 
 $(document).ready(function() {
     $.ajax({
-      url: 'http://qa.agrorural.gob.pe/WebAPI_GeoAgro/api/geo/ListarDepartamentoscombo',
+      url: 'https://intranet.agrorural.gob.pe/WebAPI_GeoAgro/api/geo/ListarDepartamentoscombo',
       data: "{}",
       headers: { 
       'Accept': 'application/json',
@@ -827,7 +827,7 @@ $(document).ready(function() {
       showProvincias($(this).val(), $('#txtDenom').val(), $('#ddlTipo').val());
 
       $.ajax({
-        url: 'http://qa.agrorural.gob.pe/WebAPI_GeoAgro/api/geo/ListarProvinciascombo',
+        url: 'https://intranet.agrorural.gob.pe/WebAPI_GeoAgro/api/geo/ListarProvinciascombo',
         data: "{ ID_DEP: '" + $(this).val() + "'}",
         headers: { 
         'Accept': 'application/json',
@@ -854,7 +854,7 @@ $(document).ready(function() {
       showDistritos($(this).val(), $('#txtDenom').val(), $('#ddlTipo').val());
 
       $.ajax({
-        url: 'http://qa.agrorural.gob.pe/WebAPI_GeoAgro/api/geo/ListarDistritoscombo',
+        url: 'https://intranet.agrorural.gob.pe/WebAPI_GeoAgro/api/geo/ListarDistritoscombo',
         data: "{ ID_PROV: '" + $(this).val() + "'}",
         headers: { 
         'Accept': 'application/json',
@@ -900,7 +900,7 @@ function getRegion() {
   `);
 
   $.ajax({
-    url: 'http://intranet.agrorural.gob.pe/WEBAPI_GEOVICE/api/geo/ReportePorRegion',
+    url: 'https://intranet.agrorural.gob.pe/WEBAPI_GEOVICE/api/geo/ReportePorRegion',
     data: "{'carga': 2}",
     headers: { 
     'Accept': 'application/json',

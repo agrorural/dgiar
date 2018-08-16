@@ -810,7 +810,7 @@ capaDistritos.addListener('click', function(event) {
 
 $(document).ready(function() {
     $.ajax({
-      url: 'http://qa.agrorural.gob.pe/WebAPI_GeoAgro/api/geo/ListarDepartamentoscombo',
+      url: 'https://intranet.agrorural.gob.pe/WebAPI_GeoAgro/api/geo/ListarDepartamentoscombo',
       data: "{}",
       headers: { 
       'Accept': 'application/json',
@@ -838,7 +838,7 @@ $(document).ready(function() {
       showProvincias($(this).val(), $('#txtDenom').val(), $('#ddlTipo').val());
 
       $.ajax({
-        url: 'http://qa.agrorural.gob.pe/WebAPI_GeoAgro/api/geo/ListarProvinciascombo',
+        url: 'https://intranet.agrorural.gob.pe/WebAPI_GeoAgro/api/geo/ListarProvinciascombo',
         data: "{ ID_DEP: '" + $(this).val() + "'}",
         headers: { 
         'Accept': 'application/json',
@@ -865,7 +865,7 @@ $(document).ready(function() {
       showDistritos($(this).val(), $('#txtDenom').val(), $('#ddlTipo').val());
 
       $.ajax({
-        url: 'http://qa.agrorural.gob.pe/WebAPI_GeoAgro/api/geo/ListarDistritoscombo',
+        url: 'https://intranet.agrorural.gob.pe/WebAPI_GeoAgro/api/geo/ListarDistritoscombo',
         data: "{ ID_PROV: '" + $(this).val() + "'}",
         headers: { 
         'Accept': 'application/json',
@@ -911,7 +911,7 @@ function getRegion() {
   `);
 
   $.ajax({
-    url: 'http://intranet.agrorural.gob.pe/WEBAPI_GEOVICE/api/geo/ReportePorRegion',
+    url: 'https://intranet.agrorural.gob.pe/WEBAPI_GEOVICE/api/geo/ReportePorRegion',
     data: "{'carga': 1}",
     headers: { 
     'Accept': 'application/json',
@@ -922,12 +922,12 @@ function getRegion() {
     success: function (resultado) {
       console.log(resultado);
 
-        //let chartData = [];
+        let chartData = [];
         let chartLabels = [];
         
         $.each(resultado, function (index, value) {
           chartLabels.push([value.Region_Natural]);
-          //chartData.push([value.MONTO_EXPEDIENTE_TECNICO]);
+          chartData.push([value.MONTO_EXPEDIENTE_TECNICO]);
         });
 
         //new Chartkick.PieChart("chartDep", chartData, {donut: true, prefix: "S/ ", legend: "bottom"})
@@ -941,8 +941,8 @@ function getRegion() {
             labels: chartLabels,
             datasets: [{
               label: 'Gráfica',
-              data: [74585758, 563387425, 79308772],
-              //data: chartData,
+              //data: [74585758, 563387425, 79308772],
+              data: chartData,
               backgroundColor: 'rgba(215, 58, 36, 0.2)',
               borderColor: 'rgba(215, 58, 36, 1)',
               borderWidth: 2
