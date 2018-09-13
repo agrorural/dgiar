@@ -447,7 +447,7 @@ capaDepartamentos.addListener('click', function(event) {
 
 
   $.ajax({
-    url: 'http://intranet.agrorural.gob.pe/WEBAPI_GEOVICE/api/geo/ProyectosPorDepartamento',
+    url: 'https://intranet.agrorural.gob.pe/WEBAPI_GEOVICE/api/geo/ProyectosPorDepartamento',
     data: "{'ID_DEP':'" + depID + "', 'carga': 1}",
     headers: { 
     'Accept': 'application/json',
@@ -577,7 +577,7 @@ capaDepartamentos.addListener('click', function(event) {
 
 // $(document).ready(function() {
 //   $.ajax({
-//     url: 'http://qa.agrorural.gob.pe/WebAPI_GeoAgro/api/geo/ListarDepartamentoscombo',
+//     url: 'https://qa.agrorural.gob.pe/WebAPI_GeoAgro/api/geo/ListarDepartamentoscombo',
 //     data: "{}",
 //     headers: { 
 //     'Accept': 'application/json',
